@@ -8,9 +8,17 @@
     <single>
       <searchString>sourcetype="ss_log" type="gw" | stats values(req_dn) as a | stats count by a | stats sum(count) as sum count(count) | eval sum=if(isnull(sum),0,sum)</searchString>
       <option name="classField">None</option>
-      <option name="underLabel">Total level2 apps</option>
+      <option name="underLabel">Total level 2 apps</option>
       <option name="linkView">search</option>
     </single>
+
+    <single>
+      <searchString>sourcetype="ss_log" type="aie" | stats values(appname) as a | stats count by a | stats sum(count) as sum count(count) | eval sum=if(isnull(sum),0,sum)</searchString>
+      <option name="classField">None</option>
+      <option name="underLabel">Total level 3 apps</option>
+      <option name="linkView">search</option>
+    </single>
+
   </row>
   <row>
 	<chart>
