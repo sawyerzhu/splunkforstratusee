@@ -107,11 +107,9 @@
   </row>
 
   <row>
-    <row>
     <map>
       <title>Applications by Source IP Location</title>
       <searchString>sourcetype="ss_log" type="gw" | geostats longfield=src_geo.longitude latfield=src_geo.latitude count by req_dn</searchString>
     </map>
-  </row>
   </row>
 </dashboard>
