@@ -109,7 +109,7 @@
   <row>
     <table>
       <title>The file size > 50M</title>
-      <searchString>sourcetype="ss_log" type="aie" objs{}.size>52428800 | rename objs{}.name as File login_name as User appname as App | table File, User, App</searchString>
+      <searchString>sourcetype="ss_log" type="aie" objs{}.size>52428800 | rename objs{}.name as File login_name as User appname as App activity as Activity | table _time, File, User, App, Activity</searchString>
       <option name="afterLabel">Total Events</option>
       <option name="classField">None</option>
       <option name="dataOverlayMode">none</option>
@@ -126,5 +126,5 @@
       <searchString>sourcetype="ss_log" type="gw" | geostats longfield=src_geo.longitude latfield=src_geo.latitude count by req_dn</searchString>
     </map>
   </row>
-  
+
 </dashboard>
