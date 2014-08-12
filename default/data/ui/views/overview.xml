@@ -2,12 +2,11 @@
 <dashboard>
   <label>Overview</label>
   <description/>
-  <earliestTime>rt-30s</earliestTime>
+  <earliestTime>rt-360d</earliestTime>
   <latestTime>rt</latestTime>
   <row>
     <single>
       <searchString>sourcetype="ss_log" type="gw" | stats sum(count) as sum count(count) | eval sum=if(isnull(sum),0,sum)</searchString>
-      <latestTime>rt</latestTime>
       <option name="classField">None</option>
       <option name="underLabel">Total level2 apps</option>
       <option name="linkView">search</option>
