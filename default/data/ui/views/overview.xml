@@ -116,9 +116,7 @@
   <row>
     <table>
       <title>The file size > 50M</title>
-      <searchString>sourcetype="ss_log" type="aie" objs{}.size>52428800 | table objs{}.name, login_name, app_name</searchString>
-      <earliestTime>rt-5m</earliestTime>
-      <latestTime>rt</latestTime>
+      <searchString>sourcetype="ss_log" type="aie" objs{}.size>52428800 | table objs{}.name, login_name, appname</searchString>
       <option name="afterLabel">Total Events</option>
       <option name="classField">None</option>
       <option name="dataOverlayMode">none</option>
