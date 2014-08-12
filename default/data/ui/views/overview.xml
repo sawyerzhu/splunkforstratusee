@@ -112,4 +112,20 @@
       <searchString>sourcetype="ss_log" type="gw" | geostats longfield=src_geo.longitude latfield=src_geo.latitude count by req_dn</searchString>
     </map>
   </row>
+
+  <row>
+    <table>
+      <title>The file size > 50M</title>
+      <searchString>sourcetype="ss_log" type="aie" objs{}.size>52428800 | table objs{}.name, login_name, app_name</searchString>
+      <earliestTime>rt-5m</earliestTime>
+      <latestTime>rt</latestTime>
+      <option name="afterLabel">Total Events</option>
+      <option name="classField">None</option>
+      <option name="dataOverlayMode">none</option>
+      <option name="displayRowNumbers">true</option>
+      <option name="drilldown">cell</option>
+      <option name="wrap">false</option>
+      <option name="count">10</option>
+    </table>
+  </row>
 </dashboard>
