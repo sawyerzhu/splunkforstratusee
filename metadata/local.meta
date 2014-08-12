@@ -1,0 +1,21 @@
+[app/ui]
+version = 6.1.3
+modtime = 1407821510.221276000
+
+[app/launcher]
+version = 6.1.3
+modtime = 1407821510.222247000
+
+[inputs/udp%3A%2F%2F5144]
+owner = admin
+version = 6.1.3
+modtime = 1407809165.955766000
+
+[inputs/monitor%3A%2F%2F%2Fhome%2Fstratusee%2Fsawyer%2Fpan.log]
+owner = admin
+version = 6.1.3
+modtime = 1407820727.716302000
+
+[app/package/check_for_updates]
+version = 6.1.3
+modtime = 1407821510.222790000
