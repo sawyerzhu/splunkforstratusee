@@ -5,6 +5,15 @@
   <earliestTime>rt-30s</earliestTime>
   <latestTime>rt</latestTime>
   <row>
+    <single>
+      <searchString>sourcetype="ss_log" type="gw" | stats sum(count) as sum count(count) | eval sum=if(isnull(sum),0,sum)</searchString>
+      <latestTime>rt</latestTime>
+      <option name="classField">None</option>
+      <option name="underLabel">Total level2 apps</option>
+      <option name="linkView">search</option>
+    </single>
+  </row>
+  <row>
 	<chart>
       <title>Top 5 apps</title>
       <searchString>sourcetype="ss_log" type="aie" | top limit=5 appname</searchString>
