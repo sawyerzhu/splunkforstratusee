@@ -121,6 +121,33 @@
   </row>
 
   <row>
+    <chart>
+      <title>Top 3 apps each day</title>
+      <searchString>sourcetype=ss_log type=aie | timechart span=1d limit=2 count by appname</searchString>
+      <option name="charting.axisTitleX.visibility">collapsed</option>
+      <option name="charting.axisTitleY.visibility">collapsed</option>
+      <option name="charting.axisX.scale">linear</option>
+      <option name="charting.axisY.scale">linear</option>
+      <option name="charting.chart">bar</option>
+      <option name="charting.chart.nullValueMode">gaps</option>
+      <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+      <option name="charting.chart.stackMode">stacked</option>
+      <option name="charting.chart.style">shiny</option>
+      <option name="charting.drilldown">all</option>
+      <option name="charting.layout.splitSeries">0</option>
+      <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+      <option name="charting.legend.placement">bottom</option>
+      <drilldown>
+        <link>
+          <![CDATA[
+            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" appname = $click.value$
+      ]]>
+        </link>
+      </drilldown>
+    </chart>
+  </row>
+
+  <row>
     <map>
       <title>Applications by Source IP Location</title>
       <searchString>sourcetype="ss_log" type="gw" | geostats longfield=src_geo.longitude latfield=src_geo.latitude count by req_dn</searchString>
