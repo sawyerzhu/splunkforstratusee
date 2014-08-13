@@ -145,6 +145,32 @@
         </link>
       </drilldown>
     </chart>
+
+
+    <chart>
+      <title>The 3 unsubscribe apps usage evey day</title>
+      <searchString>sourcetype=ss_log type=aie appname!=Box | timechart useother=false sep=1d limit=3 count(appname) by appname</searchString>
+      <option name="charting.axisTitleX.visibility">collapsed</option>
+      <option name="charting.axisTitleY.visibility">collapsed</option>
+      <option name="charting.axisX.scale">linear</option>
+      <option name="charting.axisY.scale">linear</option>
+      <option name="charting.chart">line</option>
+      <option name="charting.chart.nullValueMode">gaps</option>
+      <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+      <option name="charting.chart.stackMode">stacked</option>
+      <option name="charting.chart.style">shiny</option>
+      <option name="charting.drilldown">all</option>
+      <option name="charting.layout.splitSeries">0</option>
+      <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+      <option name="charting.legend.placement">bottom</option>
+      <drilldown>
+        <link>
+          <![CDATA[
+            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" login_name = $click.value$
+      ]]>
+        </link>
+      </drilldown>
+    </chart>
   </row>
 
   <row>
