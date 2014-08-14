@@ -140,7 +140,7 @@
       <drilldown>
         <link>
           <![CDATA[
-            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" appname = $click.value2$
+            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" appname = $click.name$
       ]]>
         </link>
       </drilldown>
@@ -166,7 +166,7 @@
       <drilldown>
         <link>
           <![CDATA[
-            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" login_name = $click.value2$
+            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" appname = $click.name$ appname = $click.name2$
       ]]>
         </link>
       </drilldown>
