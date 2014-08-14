@@ -123,7 +123,7 @@
   <row>
     <chart>
       <title>Top 3 apps each day</title>
-      <searchString>sourcetype=ss_log type=aie | timechart span=1d limit=2 count by appname</searchString>
+      <searchString>sourcetype=ss_log type=aie | timechart span=1d useother=false limit=3 count by appname</searchString>
       <option name="charting.axisTitleX.visibility">collapsed</option>
       <option name="charting.axisTitleY.visibility">collapsed</option>
       <option name="charting.axisX.scale">linear</option>
