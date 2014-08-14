@@ -166,7 +166,7 @@
       <drilldown>
         <link>
           <![CDATA[
-            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" appname = $click.name2$&earliest=-1d@h&latest=$click.value$
+            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" appname = $click.name2$&earliest=$earliest$@h&latest=$latest$
       ]]>
         </link>
       </drilldown>
