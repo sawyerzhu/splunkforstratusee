@@ -166,7 +166,7 @@
       <drilldown>
         <link>
           <![CDATA[
-            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" appname = $click.name2 | stats count(login_name) by login_name$&earliest=$earliest$&latest=$latest$
+            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" appname = $click.name2$ | stats count(login_name) by login_name&earliest=$earliest$&latest=$latest$
       ]]>
         </link>
       </drilldown>
