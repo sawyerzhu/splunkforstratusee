@@ -26,6 +26,20 @@
       <option name="linkView">search</option>
     </single>
 
+    <single>
+      <searchString>sourcetype="ss_log" type="gw" | stats values(req_mac) as a | stats count(a)</searchString>
+      <option name="classField">None</option>
+      <option name="underLabel">Total devices</option>
+      <option name="linkView">search</option>
+    </single>
+
+    <single>
+      <searchString>sourcetype="ss_log" type="aie" | stats values(objs{}.name) as a | stats count(a)</searchString>
+      <option name="classField">None</option>
+      <option name="underLabel">Total devices</option>
+      <option name="linkView">search</option>
+    </single>
+
   </row>
   <row>
 	<chart>
