@@ -78,8 +78,8 @@
   </row>
   <row>
 	<chart>
-      <title>Top 5 apps</title>
-      <searchString>sourcetype="ss_log" type="aie" | top limit=5 appname</searchString>
+      <title>Most access apps</title>
+      <searchString>sourcetype="ss_log" type="aie" | top limit=10 appname</searchString>
       <option name="charting.axisTitleX.visibility">collapsed</option>
       <option name="charting.axisTitleY.visibility">collapsed</option>
       <option name="charting.axisX.scale">linear</option>
@@ -104,7 +104,7 @@
   </row>
   <row>
 	<chart>
-      <title>Top 5 files</title>
+      <title>Most access files</title>
       <searchString>sourcetype="ss_log" type="aie" | top limit=5 objs{}.name</searchString>
       <option name="charting.axisTitleX.visibility">collapsed</option>
       <option name="charting.axisTitleY.visibility">collapsed</option>
@@ -129,8 +129,8 @@
     </chart>
 
 	<chart>
-      <title>Top 5 users</title>
-      <searchString>sourcetype="ss_log" type="aie" | top limit=5 login_name</searchString>
+      <title>Most active users</title>
+      <searchString>sourcetype="ss_log" type="aie" | top limit=10 login_name</searchString>
       <option name="charting.axisTitleX.visibility">collapsed</option>
       <option name="charting.axisTitleY.visibility">collapsed</option>
       <option name="charting.axisX.scale">linear</option>
