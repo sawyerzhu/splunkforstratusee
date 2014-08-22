@@ -41,7 +41,7 @@
       <drilldown>
         <link>
           <![CDATA[
-            sourcetype="ss_log" type="aie" | eval accountname=split(login_name,"@") | eval from_user=mvindex(accountname,0) | stats values(from_user)
+            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" | eval accountname=split(login_name,"@") | eval from_user=mvindex(accountname,0) | stats values(from_user) as a | stats values(a)
       ]]>
         </link>
       </drilldown>
