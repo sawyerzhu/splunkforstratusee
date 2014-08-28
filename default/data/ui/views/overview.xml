@@ -199,7 +199,7 @@
 
 
     <chart>
-      <title>The 3 unsubscribe apps usage evey day</title>
+      <title>The 3 unsubscribe apps usage every day</title>
       <searchString>sourcetype=ss_log type=aie appname!=Box | timechart useother=false sep=1d limit=3 count(appname) by appname</searchString>
       <option name="charting.axisTitleX.visibility">collapsed</option>
       <option name="charting.axisTitleY.visibility">collapsed</option>
@@ -226,7 +226,7 @@
 
   <row>
     <chart>
-      <title>The top 3 users access Box app evey day</title>
+      <title>The top 3 users access Box app every day</title>
       <searchString>sourcetype=ss_log type=aie appname=box | timechart useother=false sep=1d limit=3 count(login_name) by login_name</searchString>
       <option name="charting.axisTitleX.visibility">collapsed</option>
       <option name="charting.axisTitleY.visibility">collapsed</option>
