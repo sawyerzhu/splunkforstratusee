@@ -58,19 +58,33 @@
   </row>
 
   <row>
-    <single>
-      <searchString>sourcetype=ss_log type=aie [search sourcetype=ss_log type=aie login_name=*@gmail.com | stats values(appname) as appname] | stats values(appname)</searchString>
-      <option name="classField">None</option>
-      <option name="underLabel">Most accessed subscribed apps</option>
-      <option name="linkView">search</option>
-      <drilldown>
-        <link>
-          <![CDATA[
-            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="gw" | stats values(req_dn)
-      ]]>
-        </link>
-      </drilldown>
-    </single>
+    <html>
+        <h2>Most accessed unsubscribed apps</h2>
+
+        <div id="bubbleSearch1"
+             class="splunk-manager"
+             data-require="splunkjs/mvc/searchmanager"
+             data-options='{
+                "search": "sourcetype=ss_log type=aie [search sourcetype=ss_log type=aie login_name=*@gmail.com | stats values(appname) as appname] | stats count(appname) as hits by appname",
+                "earliest_time": "-360d",
+                "status_buckets": 0,
+                "cancelOnUnload": true,
+                "auto_cancel": 90,
+                "preview": true
+             }'>
+        </div>
+
+        <div id="bubbleChart1"
+             class="splunk-view"
+             data-require="app/splunkforstratusee/components/tagcloud/tagcloud"
+             data-options='{
+                "managerid": "bubbleSearch1",
+                "labelField": "appname",
+                "valueField": "hits",
+                "height": 450
+             }'>
+        </div>
+    </html>
 
     <html>
         <h2>Most accessed unsubscribed apps</h2>
@@ -104,7 +118,7 @@
   <row>
 
     <chart>
-      <title>Subscribe and Unsubscribe Storage SaaS by Access Count</title>
+      <title>The file names of upload to unsubscribed apps</title>
       <searchString>sourcetype=ss_log type=aie category{}=storage activity=upload | rename objs{}.name as file | eval aa = if(like(login_name, "%@gmail.com"), "sub@" + file, "unsub@" + file) | search aa=unsub* | eval type_appname=split(aa,"@") | eval type=mvindex(type_appname,0) | eval app=mvindex(type_appname,-1) | stats count(app) by app</searchString>
       <option name="charting.axisTitleX.visibility">collapsed</option>
       <option name="charting.axisTitleY.visibility">collapsed</option>
@@ -132,7 +146,7 @@
       <single>
         <searchString>sourcetype=ss_log type=aie category{}=storage activity=download dst_geo.continent_code=EU src_geo.continent_code!=EU | stats sum(objs{}.size) as aa | eval size=aa/1024/1024/1024 | eval size=size + "GB"| fields size</searchString>
         <option name="classField">None</option>
-        <option name="underLabel">The data size of Susan moves out of EU</option>
+        <option name="underLabel">The data size of Susan moved out of EU</option>
         <option name="linkView">search</option>
       </single>
 
