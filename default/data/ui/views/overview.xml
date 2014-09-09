@@ -93,8 +93,7 @@
              data-require="app/splunkforstratusee/components/tagcloud/tagcloud"
              data-options='{
                 "managerid": "bubbleSearch2",
-                "nameField": "appname",
-                "categoryField": "appname",
+                "labelField": "appname",
                 "valueField": "hits",
                 "height": 450
              }'>
