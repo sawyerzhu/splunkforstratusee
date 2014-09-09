@@ -5,10 +5,63 @@
   <earliestTime>rt-360d</earliestTime>
   <latestTime>rt</latestTime>
   <row>
+    <chart>
+      <title>Subscribe and Unsubscribe Storage SaaS by Access Count</title>
+      <searchString>sourcetype=ss_log type=aie category{}=storage | eval sub_unsub = if(like(login_name, "%@gmail.com"), "sub", "unsub") | stats count by sub_unsub</searchString>
+      <option name="charting.axisTitleX.visibility">collapsed</option>
+      <option name="charting.axisTitleY.visibility">collapsed</option>
+      <option name="charting.axisX.scale">linear</option>
+      <option name="charting.axisY.scale">linear</option>
+      <option name="charting.chart">pie</option>
+      <option name="charting.chart.nullValueMode">gaps</option>
+      <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+      <option name="charting.chart.stackMode">stacked</option>
+      <option name="charting.chart.style">shiny</option>
+      <option name="charting.drilldown">all</option>
+      <option name="charting.layout.splitSeries">0</option>
+      <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+      <option name="charting.legend.placement">bottom</option>
+      <drilldown>
+        <link>
+          <![CDATA[
+            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" appname = $click.value$
+      ]]>
+        </link>
+      </drilldown>
+    </chart>
+
+    <chart>
+      <title>Subscribe and Unsubscribe Storage SaaS by Distinct name</title>
+      <searchString>sourcetype=ss_log type=aie category{}=storage | eval aa = if(like(login_name, "%@gmail.com"), "sub@" + appname, "unsub@" + appname) | eval type_appname=split(aa,"@") | eval type=mvindex(type_appname,0) | eval app=mvindex(type_appname,-1) | stats distinct_count(appname) by type</searchString>
+      <option name="charting.axisTitleX.visibility">collapsed</option>
+      <option name="charting.axisTitleY.visibility">collapsed</option>
+      <option name="charting.axisX.scale">linear</option>
+      <option name="charting.axisY.scale">linear</option>
+      <option name="charting.chart">pie</option>
+      <option name="charting.chart.nullValueMode">gaps</option>
+      <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+      <option name="charting.chart.stackMode">stacked</option>
+      <option name="charting.chart.style">shiny</option>
+      <option name="charting.drilldown">all</option>
+      <option name="charting.layout.splitSeries">0</option>
+      <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+      <option name="charting.legend.placement">bottom</option>
+      <drilldown>
+        <link>
+          <![CDATA[
+            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" appname = $click.value$
+      ]]>
+        </link>
+      </drilldown>
+    </chart>
+
+  </row>
+
+  <row>
     <single>
-      <searchString>sourcetype="ss_log" type="gw" | stats values(req_dn) as a | stats count(a)</searchString>
+      <searchString>sourcetype=ss_log type=aie [search sourcetype=ss_log type=aie login_name=*@gmail.com | stats values(appname) as appname] | stats values(appname)</searchString>
       <option name="classField">None</option>
-      <option name="underLabel">Total accessed apps</option>
+      <option name="underLabel">Most accessed subscribed apps</option>
       <option name="linkView">search</option>
       <drilldown>
         <link>
@@ -19,8 +72,57 @@
       </drilldown>
     </single>
 
+    <single>
+      <searchString>sourcetype=ss_log type=aie [search sourcetype=ss_log type=aie login_name!=*@gmail.com | stats values(appname) as appname] | stats values(appname)</searchString>
+      <option name="classField">None</option>
+      <option name="underLabel">Most accessed unsubscribed apps</option>
+      <option name="linkView">search</option>
+      <drilldown>
+        <link>
+          <![CDATA[
+            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="gw" | stats values(req_dn)
+      ]]>
+        </link>
+      </drilldown>
+    </single>
+  </row>
+
+  <row>
+
+    <chart>
+      <title>Subscribe and Unsubscribe Storage SaaS by Access Count</title>
+      <searchString>sourcetype=ss_log type=aie category{}=storage activity=upload | rename objs{}.name as file | eval aa = if(like(login_name, "%@gmail.com"), "sub@" + file, "unsub@" + file) | search aa=unsub* | eval type_appname=split(aa,"@") | eval type=mvindex(type_appname,0) | eval app=mvindex(type_appname,-1) | stats count(app) by app</searchString>
+      <option name="charting.axisTitleX.visibility">collapsed</option>
+      <option name="charting.axisTitleY.visibility">collapsed</option>
+      <option name="charting.axisX.scale">linear</option>
+      <option name="charting.axisY.scale">linear</option>
+      <option name="charting.chart">pie</option>
+      <option name="charting.chart.nullValueMode">gaps</option>
+      <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+      <option name="charting.chart.stackMode">stacked</option>
+      <option name="charting.chart.style">shiny</option>
+      <option name="charting.drilldown">all</option>
+      <option name="charting.layout.splitSeries">0</option>
+      <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+      <option name="charting.legend.placement">bottom</option>
+      <drilldown>
+        <link>
+          <![CDATA[
+            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" appname = $click.value$
+      ]]>
+        </link>
+      </drilldown>
+    </chart>
+
+
+      <single>
+        <searchString>sourcetype=ss_log type=aie category{}=storage activity=download dst_geo.continent_code=EU src_geo.continent_code!=EU | stats sum(objs{}.size) as aa | eval size=aa/1024/1024/1024 | eval size=size + "GB"| fields size</searchString>
+        <option name="classField">None</option>
+        <option name="underLabel">The data size of Susan moves out of EU</option>
+        <option name="linkView">search</option>
+      </single>
 
   </row>
-  
+
 
 </dashboard>
