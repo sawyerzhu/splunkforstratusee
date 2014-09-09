@@ -72,19 +72,34 @@
       </drilldown>
     </single>
 
-    <single>
-      <searchString>sourcetype=ss_log type=aie [search sourcetype=ss_log type=aie login_name!=*@gmail.com | stats values(appname) as appname] | stats values(appname)</searchString>
-      <option name="classField">None</option>
-      <option name="underLabel">Most accessed unsubscribed apps</option>
-      <option name="linkView">search</option>
-      <drilldown>
-        <link>
-          <![CDATA[
-            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="gw" | stats values(req_dn)
-      ]]>
-        </link>
-      </drilldown>
-    </single>
+    <html>
+        <h2>Most accessed unsubscribed apps</h2>
+
+        <div id="bubbleSearch2"
+             class="splunk-manager"
+             data-require="splunkjs/mvc/searchmanager"
+             data-options='{
+                "search": "sourcetype=ss_log type=aie [search sourcetype=ss_log type=aie login_name!=*@gmail.com | stats values(appname) as appname] | stats count(appname) as his by appname",
+                "earliest_time": "-360d",
+                "status_buckets": 0,
+                "cancelOnUnload": true,
+                "auto_cancel": 90,
+                "preview": true
+             }'>
+        </div>
+
+        <div id="bubbleChart2"
+             class="splunk-view"
+             data-require="app/simple_xml_examples/components/tagcloud/tagcloud"
+             data-options='{
+                "managerid": "bubbleSearch2",
+                "nameField": "appname",
+                "categoryField": "appname",
+                "valueField": "hits",
+                "height": 450
+             }'>
+        </div>
+    </html>
   </row>
 
   <row>
