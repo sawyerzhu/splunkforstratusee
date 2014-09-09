@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <dashboard>
-  <label>Overview</label>
+  <label>Detail</label>
   <description/>
   <earliestTime>rt-360d</earliestTime>
   <latestTime>rt</latestTime>
