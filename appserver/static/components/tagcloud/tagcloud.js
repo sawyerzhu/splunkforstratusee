@@ -29,6 +29,9 @@ define(function(require, module) {
                 }, 'row', this.manager);
             }
         },
+        initialize: function() {
+            SimpleSplunkView.prototype.initialize.apply(this, arguments);
+        },
         createView: function() {
             return true;
         },
