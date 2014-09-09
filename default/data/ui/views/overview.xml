@@ -79,7 +79,7 @@
              class="splunk-manager"
              data-require="splunkjs/mvc/searchmanager"
              data-options='{
-                "search": "sourcetype=ss_log type=aie [search sourcetype=ss_log type=aie login_name!=*@gmail.com | stats values(appname) as appname] | stats count(appname) as his by appname",
+                "search": "sourcetype=ss_log type=aie [search sourcetype=ss_log type=aie login_name!=*@gmail.com | stats values(appname) as appname] | stats count(appname) as hits by appname",
                 "earliest_time": "-360d",
                 "status_buckets": 0,
                 "cancelOnUnload": true,
