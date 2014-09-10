@@ -142,14 +142,6 @@
       </drilldown>
     </chart>
 
-
-      <single>
-        <searchString>sourcetype=ss_log type=aie category{}=storage activity=download dst_geo.continent_code=EU src_geo.continent_code!=EU | stats sum(objs{}.size) as aa | eval size=aa/1024/1024/1024 | eval size=size + "GB"| fields size</searchString>
-        <option name="classField">None</option>
-        <option name="underLabel">The data size of Susan moved out of EU</option>
-        <option name="linkView">search</option>
-      </single>
-
     <html>
         <h2>Most accessed unsubscribed apps</h2>
 
@@ -157,7 +149,7 @@
              class="splunk-manager"
              data-require="splunkjs/mvc/searchmanager"
              data-options='{
-                "search": "sourcetype=ss_log type=aie category{}=storage activity=download dst_geo.continent_code=EU src_geo.continent_code!=EU | stats sum(objs{}.size) as aa | eval size=aa/1024/1024/1024 | eval size=size + 'GB'| fields size",
+                "search": "sourcetype=ss_log type=aie category{}=storage activity=download dst_geo.continent_code=EU src_geo.continent_code!=EU | stats sum(objs{}.size) as aa | eval size=aa/1024/1024/1024 | eval size=size + \"GB\"| fields size",
                 "earliest_time": "-360d",
                 "status_buckets": 0,
                 "cancelOnUnload": true,
