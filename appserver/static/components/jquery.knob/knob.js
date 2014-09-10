@@ -33,7 +33,8 @@ define(function(require, module) {
 
             $('<div style="margin: 10px, auto;"><input type="text" id="' + id + '" class="dial"></div>').appendTo(el);
 
-            var value = data[0].size;
+            var value = Math.round(data[0].size);
+            
             $("#" + id).val(value).knob({
                 'min':0,
                 'max': (Math.random() * 2 + 1) * value
