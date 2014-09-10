@@ -40,22 +40,18 @@ define(function(require, exports, module) {
             return true
         },
 
-        // making the data look how we want it to for updateView to do its job
-        formatData: function(data) {
-            // getting settings
+        updateView: function(viz, data) {
+            var me = this;
+
             var nameField = this.settings.get('nameField');
             var valueField = this.settings.get('valueField');
 
-            return data.map(function(one){
+            data = data.map(function(one){
                 return {
                     text: one[nameField],
                     size: one[valueField]
                 }
             })
-        },
-
-        updateView: function(viz, data) {
-            var me = this;
 
             var fill = d3.scale.category20();
 
