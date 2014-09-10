@@ -68,7 +68,7 @@ define(function(require, exports, module) {
                   .attr("width", w)
                   .attr("height", h)
                 .append("g")
-                  .attr("transform", "translate(" + (w / 2) + "," + (h / 2) + ")")
+                  .attr("transform", "translate(" + Math.round(w / 2) + "," + Math.round(h / 2) + ")")
                 .selectAll("text")
                   .data(words)
                 .enter().append("text")
