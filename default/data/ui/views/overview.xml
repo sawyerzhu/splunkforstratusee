@@ -21,13 +21,6 @@
       <option name="charting.layout.splitSeries">0</option>
       <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
       <option name="charting.legend.placement">bottom</option>
-      <drilldown>
-        <link>
-          <![CDATA[
-            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" appname = $click.value$
-      ]]>
-        </link>
-      </drilldown>
     </chart>
 
     <chart>
@@ -46,13 +39,6 @@
       <option name="charting.layout.splitSeries">0</option>
       <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
       <option name="charting.legend.placement">bottom</option>
-      <drilldown>
-        <link>
-          <![CDATA[
-            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" appname = $click.value$
-      ]]>
-        </link>
-      </drilldown>
     </chart>
 
   </row>
