@@ -164,7 +164,6 @@
 
         <div id="bubbleChart3"
              class="splunk-view"
-             height="450"
              data-require="app/splunkforstratusee/components/jquery.knob/knob"
              data-options='{
                 "managerid": "bubbleSearch3",
