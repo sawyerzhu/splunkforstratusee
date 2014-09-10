@@ -43,7 +43,10 @@ define(function(require, module) {
                 'angleArc': 250,
                 'readOnly': true,
                 'min':0,
+                'width': 300,
                 'max': (Math.random() + 1) * value
+            }).css({
+                "font-size": '40px'
             });
         }
     });
