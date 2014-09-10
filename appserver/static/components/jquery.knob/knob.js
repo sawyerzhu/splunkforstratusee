@@ -11,7 +11,7 @@ define(function(require, module) {
 
     var Knob = SimpleSplunkView.extend({
         moduleId: module.id,
-        className: 'jquery.knob-viz',
+        className: 'knob-viz',
         options: {
             valueField: 'count',
             data: 'preview'
@@ -39,7 +39,6 @@ define(function(require, module) {
                 'fgColor': "#66CC66",
                 'angleOffset': -125,
                 'angleArc': 250,
-                'fontWeight': 40,
                 'readOnly': true,
                 'min':0,
                 'max': (Math.random() + 1) * value
