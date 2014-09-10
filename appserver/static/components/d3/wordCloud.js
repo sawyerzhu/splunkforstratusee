@@ -64,12 +64,13 @@ define(function(require, exports, module) {
                 .start();
 
             function draw(words) {
-              d3.select(me.el).append("svg")
+                var vis = d3.select(me.el).append("svg")
                   .attr("width", w)
                   .attr("height", h)
                 .append("g")
-                  .attr("transform", "translate(" + Math.round(w / 2) + "," + Math.round(h / 2) + ")")
-                .selectAll("text")
+                  .attr("transform", "translate(" + Math.round(w / 2) + "," + Math.round(h / 2) + ")");
+
+                vis.selectAll("text")
                   .data(words)
                 .enter().append("text")
                   .style("font-size", function(d) { return d.size * 2 + "px"; })
@@ -80,6 +81,11 @@ define(function(require, exports, module) {
                     return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
                   })
                   .text(function(d) { return d.text; });
+
+                vis.transition()
+                  .delay(1000)
+                  .duration(750)
+                  .attr("transform", "translate(" + [w >> 1, h >> 1] + ")scale(" + scale + ")");
             }
         }
     });
