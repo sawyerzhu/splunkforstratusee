@@ -63,7 +63,13 @@ define(function(require, exports, module) {
                 .on("end", draw)
                 .start();
 
-            function draw(words) {
+            function draw(words, bounds) {
+                var scale = bounds ? Math.min(
+                    w / Math.abs(bounds[1].x - w / 2),
+                    w / Math.abs(bounds[0].x - w / 2),
+                    h / Math.abs(bounds[1].y - h / 2),
+                    h / Math.abs(bounds[0].y - h / 2)) / 2 : 1;
+
                 var vis = d3.select(me.el).append("svg")
                   .attr("width", w)
                   .attr("height", h)
