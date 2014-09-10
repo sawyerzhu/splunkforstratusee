@@ -71,7 +71,7 @@ define(function(require, exports, module) {
               .padding(5)
               .rotate(function() { return ~~(Math.random() * 2) * 90; })
               .font("Impact")
-              .fontSize(function(d) { return d.size; })
+              .fontSize(function(d) { return d.size * 2; })
               .on("end", draw)
               .start();
 
