@@ -24,13 +24,19 @@ define(function(require, module) {
             return true;
         },
         updateView: function(viz, data) {
+            var id = this.id + "-knob";
             var valueField = this.settings.get('valueField');
 
             // Clear the current view
             var el = this.$el.empty();
             var minMagnitude = Infinity, maxMagnitude = -Infinity;
 
-            $('<div>aaa</div>').appendTo(el);
+            $('<input type="text" id="' + id + '" class="dial" data-min="-50" data-max="50">').appendTo(el);
+
+            $("#" + id).knob({
+                'min':-50,
+                'max':50
+            });
         }
     });
 
