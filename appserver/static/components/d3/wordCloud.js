@@ -53,6 +53,7 @@ define(function(require, exports, module) {
             var nameField = this.settings.get('nameField');
             var valueField = this.settings.get('valueField');
 
+            return ['aa', 'bb'];
         },
 
         updateView: function(viz, data) {
