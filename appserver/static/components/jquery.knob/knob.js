@@ -37,7 +37,7 @@ define(function(require, module) {
 
             $("#" + id).val(value).knob({
                 'min':0,
-                'max': (Math.random() * 2 + 1) * value
+                'max': (Math.random() + 1) * value
             });
         }
     });
