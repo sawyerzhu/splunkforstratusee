@@ -7,6 +7,7 @@ define(function(require, module) {
     var utils = require('splunkjs/mvc/utils');
     var SimpleSplunkView = require('splunkjs/mvc/simplesplunkview');
     var Drilldown = require('splunkjs/mvc/drilldown');
+    var SearchManager = require('splunkjs/mvc/searchmanager');
     require('css!./tagcloud.css');
 
     var TagCloud = SimpleSplunkView.extend({
