@@ -149,7 +149,7 @@
              class="splunk-manager"
              data-require="splunkjs/mvc/searchmanager"
              data-options='{
-                "search": "sourcetype=ss_log type=aie category{}=storage activity=download dst_geo.continent_code=EU src_geo.continent_code!=EU | stats sum(objs{}.size) as aa | eval size=aa/1024/1024/1024 | eval size=size + \"GB\"| fields size",
+                "search": "sourcetype=ss_log type=aie category{}=storage activity=download dst_geo.continent_code=EU src_geo.continent_code!=EU | stats sum(objs{}.size) as aa | eval size=aa/1024/1024/1024 | fields size",
                 "earliest_time": "-360d",
                 "status_buckets": 0,
                 "cancelOnUnload": true,
