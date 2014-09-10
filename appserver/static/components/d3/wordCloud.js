@@ -36,13 +36,6 @@ define(function(require, exports, module) {
             SimpleSplunkView.prototype.initialize.apply(this, arguments);
         },
 
-        _handleResize: function(e){
-
-            // e.data is the this pointer passed to the callback.
-            // here it refers to this object and we call render()
-            e.data.render();
-        },
-
         createView: function() {
             return true
         },
@@ -82,7 +75,7 @@ define(function(require, exports, module) {
                     .attr("width", 450)
                     .attr("height", 450)
                   .append("g")
-                    .attr("transform", "translate(150,150)")
+                    .attr("transform", "translate(225,225)")
                   .selectAll("text")
                     .data(words)
                   .enter().append("text")
