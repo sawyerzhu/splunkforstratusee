@@ -18,8 +18,6 @@ define(function(require, exports, module) {
     var d3LayoutCloud = require("./d3.layout.cloud");
     var SimpleSplunkView = require("splunkjs/mvc/simplesplunkview");
 
-    require("css!./bubblechart.css");
-
     var WordCloud = SimpleSplunkView.extend({
 
         className: "splunk-toolkit-bubble-chart",
