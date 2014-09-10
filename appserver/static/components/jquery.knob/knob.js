@@ -31,11 +31,14 @@ define(function(require, module) {
             var el = this.$el.empty();
             var minMagnitude = Infinity, maxMagnitude = -Infinity;
 
-            $('<div style="margin: 10px auto;"><input type="text" id="' + id + '" class="dial"></div>').appendTo(el);
+            $('<input type="text" id="' + id + '" class="dial">').appendTo(el);
 
             var value = Math.round(data[0].size);
 
             $("#" + id).val(value).knob({
+                'fgColor': "#66CC66",
+                'angleOffset': -125,
+                'angleArc': 250,
                 'min':0,
                 'max': (Math.random() + 1) * value
             });
