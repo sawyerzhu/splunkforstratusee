@@ -171,5 +171,37 @@
 
   </row>
 
+  <row>
+
+    <html>
+        <h2>The file names of upload to unsubscribed apps</h2>
+
+        <div id="bubbleSearch4"
+             class="splunk-manager"
+             data-require="splunkjs/mvc/searchmanager"
+             data-options='{
+                "search": "sourcetype=ss_log type=aie category{}=storage activity=upload | rename objs{}.name as file | eval aa = if(like(login_name, "%@gmail.com"), "sub@" + file, "unsub@" + file) | search aa=unsub* | eval type_appname=split(aa,"@") | eval type=mvindex(type_appname,0) | eval app=mvindex(type_appname,-1) | stats count(app) by app",
+                "earliest_time": "-360d",
+                "status_buckets": 0,
+                "cancelOnUnload": true,
+                "auto_cancel": 90,
+                "preview": true
+             }'>
+        </div>
+
+        <div id="bubbleChart4"
+             class="splunk-view"
+             data-require="app/splunkforstratusee/components/d3/wordCloud"
+             data-options='{
+                "managerid": "bubbleSearch4",
+                "labelField": "app",
+                "valueField": "count",
+                "height": 450
+             }'>
+        </div>
+    </html>
+
+  </row>
+
 
 </dashboard>
