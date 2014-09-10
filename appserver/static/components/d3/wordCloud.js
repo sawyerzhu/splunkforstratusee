@@ -79,8 +79,8 @@ define(function(require, exports, module) {
                 me.$el.html("");
 
                 d3.select(me.el).append("svg")
-                    .attr("width", 300)
-                    .attr("height", 300)
+                    .attr("width", 450)
+                    .attr("height", 450)
                   .append("g")
                     .attr("transform", "translate(150,150)")
                   .selectAll("text")
