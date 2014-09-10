@@ -39,6 +39,9 @@ define(function(require, exports, module) {
 
             me.$el.html('');
 
+            var w = me.$el.width();
+            var h = me.$el.height();
+
             var nameField = this.settings.get('nameField');
             var valueField = this.settings.get('valueField');
 
@@ -51,7 +54,7 @@ define(function(require, exports, module) {
 
             var fill = d3.scale.category20();
 
-            d3.layout.cloud().size([300, 300])
+            d3.layout.cloud().size([w, h])
                 .words(data)
                 .padding(5)
                 //.rotate(function() { return ~~(Math.random() * 2) * 90; })
@@ -62,10 +65,10 @@ define(function(require, exports, module) {
 
             function draw(words) {
               d3.select(me.el).append("svg")
-                  .attr("width", 300)
-                  .attr("height", 300)
+                  .attr("width", w)
+                  .attr("height", h)
                 .append("g")
-                  .attr("transform", "translate(150,150)")
+                  .attr("transform", "translate(" + (w / 2) + "," + (h / 2) + ")")
                 .selectAll("text")
                   .data(words)
                 .enter().append("text")
