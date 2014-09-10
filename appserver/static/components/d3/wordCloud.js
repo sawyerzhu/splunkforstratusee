@@ -86,7 +86,7 @@ define(function(require, exports, module) {
                   .selectAll("text")
                     .data(words)
                   .enter().append("text")
-                    .style("font-size", function(d) { return d.size + "px"; })
+                    .style("font-size", function(d) { return (d.size * 2) + "px"; })
                     .style("font-family", "Impact")
                     .style("fill", function(d, i) { return fill(i); })
                     .attr("text-anchor", "middle")
