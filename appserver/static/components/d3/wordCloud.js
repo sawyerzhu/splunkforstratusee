@@ -37,10 +37,10 @@ define(function(require, exports, module) {
         updateView: function(viz, data) {
             var me = this;
 
-            me.$el.html('');
-
             var w = me.$el.width();
             var h = me.$el.height();
+            
+            me.$el.html('');
 
             var nameField = this.settings.get('nameField');
             var valueField = this.settings.get('valueField');
