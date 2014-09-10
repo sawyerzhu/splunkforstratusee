@@ -9,6 +9,8 @@ define(function(require, module) {
     var SimpleSplunkView = require('splunkjs/mvc/simplesplunkview');
     var Drilldown = require('splunkjs/mvc/drilldown');
 
+    require('css!./knob.css');
+
     var Knob = SimpleSplunkView.extend({
         moduleId: module.id,
         className: 'knob-viz',
