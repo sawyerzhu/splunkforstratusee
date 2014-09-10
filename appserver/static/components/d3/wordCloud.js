@@ -38,9 +38,9 @@ define(function(require, exports, module) {
             var me = this;
 
             var w = me.$el.width();
-            var h = me.$el.height();
 
             me.$el.html('').height(this.settings.get('height') || 450);
+            var h = me.$el.height();
 
             var nameField = this.settings.get('nameField');
             var valueField = this.settings.get('valueField');
