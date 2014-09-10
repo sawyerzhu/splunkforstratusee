@@ -48,7 +48,8 @@ define(function(require, module) {
             })
 
             $("#" + id).css({
-                "font-size": '60px'
+                "font-size": '40px',
+                "margin-left": (this.$el.width - 200) / 2
             });
         }
     });
