@@ -26,6 +26,8 @@ define(function(require, module) {
             return true;
         },
         updateView: function(viz, data) {
+            var me = this;
+
             var id = this.id + "-knob";
             var valueField = this.settings.get('valueField');
 
@@ -56,6 +58,7 @@ define(function(require, module) {
             });
 
             $("#" + id).parent().css({
+                "margin-top": me.settings.get('marginTop') || 60,
                 "margin-left": ($("#" + id).parent().parent().width() - $("#" + id).parent().width()) / 2
             });
         }

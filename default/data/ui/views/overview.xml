@@ -168,7 +168,8 @@
              data-options='{
                 "managerid": "bubbleSearch3",
                 "valueField": "size",
-                "height": 260
+                "height": 260,
+                "marginTop": 60
              }'>
         </div>
     </html>
