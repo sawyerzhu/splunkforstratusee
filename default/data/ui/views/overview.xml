@@ -6,7 +6,7 @@
   <latestTime>rt</latestTime>
   <row>
     <chart>
-      <title>Subscribe and Unsubscribe Storage SaaS by Access Count</title>
+      <title>Subscribe and unsubscribe storage SaaS by access count</title>
       <searchString>sourcetype=ss_log type=aie category{}=storage | eval sub_unsub = if(like(login_name, "%@gmail.com"), "sub", "unsub") | stats count by sub_unsub</searchString>
       <option name="charting.axisTitleX.visibility">collapsed</option>
       <option name="charting.axisTitleY.visibility">collapsed</option>
@@ -24,7 +24,7 @@
     </chart>
 
     <chart>
-      <title>Subscribe and Unsubscribe Storage SaaS by Distinct name</title>
+      <title>Subscribe and unsubscribe storage SaaS by distinct name</title>
       <searchString>sourcetype=ss_log type=aie category{}=storage | eval aa = if(like(login_name, "%@gmail.com"), "sub@" + appname, "unsub@" + appname) | eval type_appname=split(aa,"@") | eval type=mvindex(type_appname,0) | eval app=mvindex(type_appname,-1) | stats distinct_count(appname) by type</searchString>
       <option name="charting.axisTitleX.visibility">collapsed</option>
       <option name="charting.axisTitleY.visibility">collapsed</option>
