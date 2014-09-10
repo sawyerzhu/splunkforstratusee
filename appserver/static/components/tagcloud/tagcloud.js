@@ -24,29 +24,6 @@ define(function(require, module) {
         events: {
             'click a': function(e) {
                 e.preventDefault();
-
-                new SearchManager({
-                    "id": 'customsearch1',
-                    "search": 'sourcetype=ss_log type=aie appname=Box',
-                    "earliest_time": "-360d",
-                    "latest_time": "now",
-                    "app": utils.getCurrentApp(),
-                    "auto_cancel": 90,
-                    "status_buckets": 0,
-                    "preview": true,
-                    "timeFormat": "%s.%Q",
-                    "wait": 0,
-                    "runOnSubmit": true
-                });
-
-                var tmpView = new SimpleSplunkView({
-                    managerid: 'customsearch1'
-                });
-                // Perform automatic drilldown on click on a tag
-                Drilldown.handleDrilldown({
-                    name: this.settings.get('labelField'),
-                    value: $.trim($(e.target).text())
-                }, 'row', tmpView.manager);
             }
         },
         initialize: function() {
