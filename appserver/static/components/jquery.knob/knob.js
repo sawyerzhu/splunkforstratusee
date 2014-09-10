@@ -35,7 +35,10 @@ define(function(require, module) {
 
             $('<input type="text" id="' + id + '" class="dial">').appendTo(el);
 
-            var value = Math.round(data[0].size);
+            var value = '0';
+            if (data && data.length == 1) {
+                Math.round(data[0][valueField]);
+            }
 
             $("#" + id).val(value).knob({
                 'fgColor': "#66CC66",
@@ -45,7 +48,7 @@ define(function(require, module) {
                 'min':0,
                 'width': 260,
                 'max': (Math.random() + 1) * value
-            })
+            });
 
             $("#" + id).css({
                 "font-size": '40px',
