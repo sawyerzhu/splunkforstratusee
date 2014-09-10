@@ -48,7 +48,8 @@ define(function(require, module) {
             })
 
             $("#" + id).css({
-                "font-size": '40px'
+                "font-size": '40px',
+                'box-shadow': 'inset 0 0 0 rgba(0, 0, 0, 0.075)'
             });
 
             $("#" + id).parent().css({
