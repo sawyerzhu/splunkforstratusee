@@ -4,6 +4,7 @@
  */
 define(function(require, module) {
     var _ = require('underscore'), $ = require('jquery');
+    var utils = require('splunkjs/mvc/utils');
     var SimpleSplunkView = require('splunkjs/mvc/simplesplunkview');
     var Drilldown = require('splunkjs/mvc/drilldown');
     require('css!./tagcloud.css');
@@ -26,7 +27,19 @@ define(function(require, module) {
                 Drilldown.handleDrilldown({
                     name: this.settings.get('labelField'),
                     value: $.trim($(e.target).text())
-                }, 'row', this.manager);
+                }, 'row', new SearchManager({
+                    "id": 'customsearch1',
+                    "search": 'sourcetype=ss_log type=aie appname=Box',
+                    "earliest_time": "-360d",
+                    "latest_time": "now",
+                    "app": utils.getCurrentApp(),
+                    "auto_cancel": 90,
+                    "status_buckets": 0,
+                    "preview": true,
+                    "timeFormat": "%s.%Q",
+                    "wait": 0,
+                    "runOnSubmit": true
+                }));
             }
         },
         initialize: function() {
