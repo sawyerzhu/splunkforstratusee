@@ -37,7 +37,7 @@ define(function(require, module) {
 
             var value = '0';
             if (data && data.length == 1) {
-                Math.round(data[0][valueField]);
+                value = Math.round(data[0][valueField]);
             }
 
             $("#" + id).val(value).knob({
