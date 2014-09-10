@@ -47,8 +47,11 @@ define(function(require, module) {
                 'max': (Math.random() + 1) * value
             })
 
+            $("#" + id).css({
+                "font-size": '40px'
+            });
+
             $("#" + id).parent().css({
-                "font-size": '40px',
                 "margin-left": ($("#" + id).parent().parent().width() - $("#" + id).parent().width()) / 2
             });
         }
