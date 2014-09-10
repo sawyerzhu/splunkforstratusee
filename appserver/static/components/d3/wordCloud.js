@@ -20,14 +20,8 @@ define(function(require, exports, module) {
 
     var WordCloud = SimpleSplunkView.extend({
 
-        className: "splunk-toolkit-bubble-chart",
-
         options: {
-            managerid: null,
-            data: "preview",
-            nameField: null,
-            valueField: 'count',
-            categoryField: null
+            data: "preview"
         },
 
         output_mode: "json",
@@ -55,7 +49,10 @@ define(function(require, exports, module) {
 
             var fill = d3.scale.category20();
 
-            d3.layout.cloud().size([450, 450])
+            var w = 300,
+                h = 300;
+
+            d3.layout.cloud().size([w, h])
               .words(data)
               .padding(5)
               .rotate(function() { return ~~(Math.random() * 2) * 90; })
@@ -65,8 +62,7 @@ define(function(require, exports, module) {
               .start();
 
             function draw(data, bounds) {
-              var w = 450,
-                  h = 450;
+
               var scale = bounds ? Math.min(
                   w / Math.abs(bounds[1].x - w / 2),
                   w / Math.abs(bounds[0].x - w / 2),
@@ -75,20 +71,20 @@ define(function(require, exports, module) {
               words = data;
 
               var vis = d3.select(me.el).append("svg")
-                  .attr("width", 450)
-                  .attr("height", 450)
+                  .attr("width", w)
+                  .attr("height", h)
                 .append("g")
-                  .attr("transform", "translate(225,225)");
+                  .attr("transform", "translate(" + (w / 2) + "," + (h / 2) + ")");
 
               var text = vis.selectAll("text")
                   .data(words, function(d) { return d.text.toLowerCase(); });
               text.transition()
                   .duration(1000)
-                  .attr("transform", function(d) { return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")"; })
+                  .attr("transform", function(d) { return "translate(" + [d.x, d.y] + ")"; })
                   .style("font-size", function(d) { return d.size + "px"; });
               text.enter().append("text")
                   .attr("text-anchor", "middle")
-                  .attr("transform", function(d) { return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")"; })
+                  .attr("transform", function(d) { return "translate(" + [d.x, d.y] + ")"; })
                   .style("font-size", function(d) { return d.size + "px"; })
                   .on("click", function(d) {
                     load(d.text);
