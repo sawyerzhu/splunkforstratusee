@@ -5,7 +5,7 @@
 define(function(require, module) {
     var _ = require('underscore');
     var $ = require('jquery');
-    var jquery.knob = require('./jquery.knob');
+    var jquery_knob = require('./jquery.knob');
     var SimpleSplunkView = require('splunkjs/mvc/simplesplunkview');
     var Drilldown = require('splunkjs/mvc/drilldown');
 
