@@ -45,7 +45,9 @@ define(function(require, module) {
                 'min':0,
                 'width': 260,
                 'max': (Math.random() + 1) * value
-            }).css({
+            })
+
+            $("#" + id).css({
                 "font-size": '60px'
             });
         }
