@@ -140,7 +140,7 @@
                 "managerid": "bubbleSearch4",
                 "nameField": "app",
                 "valueField": "count",
-                "height": 450
+                "height": 360
              }'>
         </div>
     </html>
@@ -168,7 +168,7 @@
              data-options='{
                 "managerid": "bubbleSearch3",
                 "valueField": "size",
-                "height": 360
+                "height": 260
              }'>
         </div>
     </html>
