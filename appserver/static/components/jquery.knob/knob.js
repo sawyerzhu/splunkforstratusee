@@ -31,11 +31,12 @@ define(function(require, module) {
             var el = this.$el.empty();
             var minMagnitude = Infinity, maxMagnitude = -Infinity;
 
-            $('<input type="text" id="' + id + '" class="dial">').appendTo(el);
+            $('<div style="margin: 10px, auto;"><input type="text" id="' + id + '" class="dial"></div>').appendTo(el);
 
-            $("#" + id).val(data[0].size).knob({
+            var value = data[0].size;
+            $("#" + id).val(value).knob({
                 'min':0,
-                'max':100000
+                'max': (Math.random() * 2 + 1) * value
             });
         }
     });
