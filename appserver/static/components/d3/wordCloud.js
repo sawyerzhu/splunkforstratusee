@@ -56,7 +56,7 @@ define(function(require, exports, module) {
                 .padding(5)
                 //.rotate(function() { return ~~(Math.random() * 2) * 90; })
                 .font("Impact")
-                .fontSize(function(d) { return d.size * 3; })
+                .fontSize(function(d) { return d.size * 2; })
                 .on("end", draw)
                 .start();
 
@@ -69,7 +69,7 @@ define(function(require, exports, module) {
                 .selectAll("text")
                   .data(words)
                 .enter().append("text")
-                  .style("font-size", function(d) { return d.size * 3 + "px"; })
+                  .style("font-size", function(d) { return d.size * 2 + "px"; })
                   .style("font-family", "Impact")
                   .style("fill", function(d, i) { return fill(i); })
                   .attr("text-anchor", "middle")

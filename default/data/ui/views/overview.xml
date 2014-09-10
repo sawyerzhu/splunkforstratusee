@@ -117,62 +117,6 @@
 
   <row>
 
-    <chart>
-      <title>The file names of upload to unsubscribed apps</title>
-      <searchString>sourcetype=ss_log type=aie category{}=storage activity=upload | rename objs{}.name as file | eval aa = if(like(login_name, "%@gmail.com"), "sub@" + file, "unsub@" + file) | search aa=unsub* | eval type_appname=split(aa,"@") | eval type=mvindex(type_appname,0) | eval app=mvindex(type_appname,-1) | stats count(app) by app</searchString>
-      <option name="charting.axisTitleX.visibility">collapsed</option>
-      <option name="charting.axisTitleY.visibility">collapsed</option>
-      <option name="charting.axisX.scale">linear</option>
-      <option name="charting.axisY.scale">linear</option>
-      <option name="charting.chart">pie</option>
-      <option name="charting.chart.nullValueMode">gaps</option>
-      <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
-      <option name="charting.chart.stackMode">stacked</option>
-      <option name="charting.chart.style">shiny</option>
-      <option name="charting.drilldown">all</option>
-      <option name="charting.layout.splitSeries">0</option>
-      <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
-      <option name="charting.legend.placement">bottom</option>
-      <drilldown>
-        <link>
-          <![CDATA[
-            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" appname = $click.value$
-      ]]>
-        </link>
-      </drilldown>
-    </chart>
-
-    <html>
-        <h2>The data size of Susan moved out EU(GB)</h2>
-
-        <div id="bubbleSearch3"
-             class="splunk-manager"
-             data-require="splunkjs/mvc/searchmanager"
-             data-options='{
-                "search": "sourcetype=ss_log type=aie category{}=storage activity=download dst_geo.continent_code=EU src_geo.continent_code!=EU | stats sum(objs{}.size) as aa | eval size=aa/1024/1024/1024 | fields size",
-                "earliest_time": "-360d",
-                "status_buckets": 0,
-                "cancelOnUnload": true,
-                "auto_cancel": 90,
-                "preview": true
-             }'>
-        </div>
-
-        <div id="bubbleChart3"
-             class="splunk-view"
-             data-require="app/splunkforstratusee/components/jquery.knob/knob"
-             data-options='{
-                "managerid": "bubbleSearch3",
-                "valueField": "size",
-                "height": 450
-             }'>
-        </div>
-    </html>
-
-  </row>
-
-  <row>
-
     <html>
         <h2>The file names of upload to unsubscribed apps</h2>
 
@@ -196,6 +140,34 @@
                 "managerid": "bubbleSearch4",
                 "nameField": "app",
                 "valueField": "count",
+                "height": 450
+             }'>
+        </div>
+    </html>
+
+
+    <html>
+        <h2>The data size of Susan moved out EU(GB)</h2>
+
+        <div id="bubbleSearch3"
+             class="splunk-manager"
+             data-require="splunkjs/mvc/searchmanager"
+             data-options='{
+                "search": "sourcetype=ss_log type=aie category{}=storage activity=download dst_geo.continent_code=EU src_geo.continent_code!=EU | stats sum(objs{}.size) as aa | eval size=aa/1024/1024/1024 | fields size",
+                "earliest_time": "-360d",
+                "status_buckets": 0,
+                "cancelOnUnload": true,
+                "auto_cancel": 90,
+                "preview": true
+             }'>
+        </div>
+
+        <div id="bubbleChart3"
+             class="splunk-view"
+             data-require="app/splunkforstratusee/components/jquery.knob/knob"
+             data-options='{
+                "managerid": "bubbleSearch3",
+                "valueField": "size",
                 "height": 450
              }'>
         </div>
