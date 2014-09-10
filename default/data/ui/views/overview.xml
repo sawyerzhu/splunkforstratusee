@@ -150,6 +150,33 @@
         <option name="linkView">search</option>
       </single>
 
+    <html>
+        <h2>Most accessed unsubscribed apps</h2>
+
+        <div id="bubbleSearch3"
+             class="splunk-manager"
+             data-require="splunkjs/mvc/searchmanager"
+             data-options='{
+                "search": "sourcetype=ss_log type=aie category{}=storage activity=download dst_geo.continent_code=EU src_geo.continent_code!=EU | stats sum(objs{}.size) as aa | eval size=aa/1024/1024/1024 | eval size=size + 'GB'| fields size",
+                "earliest_time": "-360d",
+                "status_buckets": 0,
+                "cancelOnUnload": true,
+                "auto_cancel": 90,
+                "preview": true
+             }'>
+        </div>
+
+        <div id="bubbleChart3"
+             class="splunk-view"
+             data-require="app/splunkforstratusee/components/jquery.knob/knob"
+             data-options='{
+                "managerid": "bubbleSearch3",
+                "valueField": "size",
+                "height": 450
+             }'>
+        </div>
+    </html>
+
   </row>
 
 
