@@ -50,7 +50,7 @@ define(function(require, exports, module) {
             var fill = d3.scale.category20();
 
             d3.layout.cloud().size([300, 300])
-                .words(datas)
+                .words(data)
                 .padding(5)
                 //.rotate(function() { return ~~(Math.random() * 2) * 90; })
                 .font("Impact")
