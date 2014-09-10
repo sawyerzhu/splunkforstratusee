@@ -47,9 +47,9 @@ define(function(require, module) {
                 'max': (Math.random() + 1) * value
             })
 
-            $("#" + id).css({
+            $("#" + id)..panret().css({
                 "font-size": '40px',
-                "margin-left": (this.$el.width - 200) / 2
+                "margin-left": ($("#" + id).parent().parent().width() - $("#" + id).parent().width()) / 2
             });
         }
     });
