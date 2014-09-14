@@ -36,7 +36,7 @@ define(function(require, module) {
             var el = this.$el.empty();
             var minMagnitude = Infinity, maxMagnitude = -Infinity;
 
-            $('<input type="text" id="' + id + '" class="dial"><div style="margin-top: 10px;" id="' + id2 +'"></div>').appendTo(el);
+            $('<input type="text" id="' + id + '" class="dial"><div style="margin-top: 10px; padding-bottom: 10px;" id="' + id2 +'"></div>').appendTo(el);
 
             var value = '0';
             if (data && data.length == 2) {
