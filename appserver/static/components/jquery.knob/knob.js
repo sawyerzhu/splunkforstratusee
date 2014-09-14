@@ -64,7 +64,7 @@ define(function(require, module) {
                 "margin-left": ($("#" + id).parent().parent().width() - $("#" + id).parent().width()) / 2
             });
 
-            $('#' + id2).html(file_types);
+            $('#' + id2).html(file_types.join(', '));
         }
     });
 
