@@ -29,17 +29,19 @@ define(function(require, module) {
             var me = this;
 
             var id = this.id + "-knob";
+            var id2 = this.id + '-file_types'
             var valueField = this.settings.get('valueField');
 
             // Clear the current view
             var el = this.$el.empty();
             var minMagnitude = Infinity, maxMagnitude = -Infinity;
 
-            $('<input type="text" id="' + id + '" class="dial">').appendTo(el);
+            $('<input type="text" id="' + id + '" class="dial"><div id="' + id2 +'"></div>').appendTo(el);
 
             var value = '0';
-            if (data && data.length == 1) {
+            if (data && data.length == 2) {
                 value = Math.round(data[0][valueField]);
+                file_types = data[1].file_types;
             }
 
             $("#" + id).val(value).knob({
@@ -61,6 +63,8 @@ define(function(require, module) {
                 "margin-top": me.settings.get('marginTop') || 60,
                 "margin-left": ($("#" + id).parent().parent().width() - $("#" + id).parent().width()) / 2
             });
+
+            $('#' + id2).html(file_types);
         }
     });
 
