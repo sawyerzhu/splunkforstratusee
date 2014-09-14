@@ -38,7 +38,9 @@ define(function(require, module) {
 
             $('<input type="text" id="' + id + '" class="dial"><div style="margin-top: 10px; padding-bottom: 10px;" id="' + id2 +'"></div>').appendTo(el);
 
-            var value = '0';
+            var value = 0;
+            var file_types = [];
+
             if (data && data.length == 2) {
                 value = Math.round(data[0][valueField]);
                 file_types = data[1].file_types;
