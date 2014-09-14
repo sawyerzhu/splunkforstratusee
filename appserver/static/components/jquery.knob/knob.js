@@ -36,7 +36,7 @@ define(function(require, module) {
             var el = this.$el.empty();
             var minMagnitude = Infinity, maxMagnitude = -Infinity;
 
-            $('<input type="text" id="' + id + '" class="dial"><div id="' + id2 +'"></div>').appendTo(el);
+            $('<input type="text" id="' + id + '" class="dial"><div style="margin-top: 10px;" id="' + id2 +'"></div>').appendTo(el);
 
             var value = '0';
             if (data && data.length == 2) {
@@ -64,7 +64,7 @@ define(function(require, module) {
                 "margin-left": ($("#" + id).parent().parent().width() - $("#" + id).parent().width()) / 2
             });
 
-            $('#' + id2).html(file_types.join(', '));
+            $('#' + id2).html("File types: " + file_types.join(', '));
         }
     });
 
