@@ -8,7 +8,7 @@ define(function(require, module) {
     var jquery_knob = require('./jquery.knob');
     var SimpleSplunkView = require('splunkjs/mvc/simplesplunkview');
     var Drilldown = require('splunkjs/mvc/drilldown');
-    var highcharts = require('highcharts');
+    var Highcharts = require('highcharts');
 
     require('css!./knob.css');
 
@@ -37,37 +37,47 @@ define(function(require, module) {
             var el = this.$el.empty();
             var minMagnitude = Infinity, maxMagnitude = -Infinity;
 
-            $('<input type="text" id="' + id + '" class="dial"><div style="margin-top: 10px; padding-bottom: 10px;" id="' + id2 +'"></div>').appendTo(el);
+            $('<div  id="' + id +'"></div>').appendTo(el);
 
-            var value = 0;
+            var total = 0;
             var file_types = [];
 
-            if (data && data.length == 2) {
-                value = Math.round(data[0][valueField]);
-                file_types = data[1].file_types;
+            if (data && data.length > 2) {
+                total = Math.round(data[0]['total']);
+
+                for(var i = 1; i < data.length; i++) {
+                    file_types.push([data[i].type, parseFloat(data[i].type_size)]);
+                }
             }
 
-            $("#" + id).val(value).knob({
-                'fgColor': "#66CC66",
-                'angleOffset': -125,
-                'angleArc': 250,
-                'readOnly': true,
-                'min':0,
-                'width': 260,
-                'max': (Math.random() + 1) * value
-            });
+            4('#susan_eu').html('Data volume Susan moved out of EU - total ' + Math.round(total) + "GB")
 
-            $("#" + id).css({
-                "font-size": '40px',
-                'box-shadow': 'inset 0 0 0 rgba(0, 0, 0, 0.075)'
-            });
+            $('#' + id).highcharts({
+                 chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Share total size',
+                data: file_types
+            }]
 
-            $("#" + id).parent().css({
-                "margin-top": me.settings.get('marginTop') || 60,
-                "margin-left": ($("#" + id).parent().parent().width() - $("#" + id).parent().width()) / 2
             });
-
-            $('#' + id2).html("File types: " + file_types.join(', '));
         }
     });
 
