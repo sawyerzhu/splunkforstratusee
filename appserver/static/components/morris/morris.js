@@ -7,7 +7,7 @@ Licensed under the BSD-2-Clause License.
 (function (factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
-        define([jquery, '../raphael/rahpael'], factory);
+        define([jquery, '../raphael/raphael'], factory);
     } else {
         // Browser globals
         factory(morris);
