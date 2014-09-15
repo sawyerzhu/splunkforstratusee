@@ -201,7 +201,7 @@
 
 
     <html>
-        <h2 id='susan_eu'>Data volume Susan moved out of EU</h2>
+        <h2 id="susan_eu">Data volume Susan moved out of EU</h2>
 
         <div id="bubbleSearch3"
              class="splunk-manager"
