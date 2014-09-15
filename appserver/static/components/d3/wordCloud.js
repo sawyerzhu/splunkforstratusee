@@ -58,7 +58,6 @@ define(function(require, exports, module) {
 
             d3.layout.cloud().size([w, h])
                 .words(data)
-                .timeInterval(10)
                 .font("Impact")
                 .fontSize(function(d) { return fontSize(+d.size); })
                 .on("end", draw)
