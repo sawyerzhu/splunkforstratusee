@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dashboard>
+  <label>More</label>
+  <description/>
+  <earliestTime>rt-360d</earliestTime>
+  <latestTime>rt</latestTime>
+
+  <row>
+    <chart>
+      <title>Most access apps</title>
+      <searchString>sourcetype="ss_log" type="aie" | top limit=10 appname</searchString>
+      <option name="charting.axisTitleX.visibility">collapsed</option>
+      <option name="charting.axisTitleY.visibility">collapsed</option>
+      <option name="charting.axisX.scale">linear</option>
+      <option name="charting.axisY.scale">linear</option>
+      <option name="charting.chart">bar</option>
+      <option name="charting.chart.nullValueMode">gaps</option>
+      <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+      <option name="charting.chart.stackMode">stacked</option>
+      <option name="charting.chart.style">shiny</option>
+      <option name="charting.drilldown">all</option>
+      <option name="charting.layout.splitSeries">0</option>
+      <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+      <option name="charting.legend.placement">bottom</option>
+      <drilldown>
+        <link>
+          <![CDATA[
+            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" appname = $click.value$
+      ]]>
+        </link>
+      </drilldown>
+    </chart>
+  </row>
+  <row>
+    <chart>
+      <title>Most access files</title>
+      <searchString>sourcetype="ss_log" type="aie" | top limit=10 objs{}.name | rename objs{}.name as file</searchString>
+      <option name="charting.axisTitleX.visibility">collapsed</option>
+      <option name="charting.axisTitleY.visibility">collapsed</option>
+      <option name="charting.axisX.scale">linear</option>
+      <option name="charting.axisY.scale">linear</option>
+      <option name="charting.chart">column</option>
+      <option name="charting.chart.nullValueMode">gaps</option>
+      <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+      <option name="charting.chart.stackMode">stacked</option>
+      <option name="charting.chart.style">shiny</option>
+      <option name="charting.drilldown">all</option>
+      <option name="charting.layout.splitSeries">0</option>
+      <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+      <option name="charting.legend.placement">bottom</option>
+      <option name="charting.axisLabelsX.majorLabelStyle.rotation">45</option>
+      <drilldown>
+        <link>
+          <![CDATA[
+            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" objs{}.name = $click.value$
+      ]]>
+        </link>
+      </drilldown>
+    </chart>
+
+    <chart>
+      <title>Most active users</title>
+      <searchString>sourcetype="ss_log" type="aie" | top limit=10 login_name</searchString>
+      <option name="charting.axisTitleX.visibility">collapsed</option>
+      <option name="charting.axisTitleY.visibility">collapsed</option>
+      <option name="charting.axisX.scale">linear</option>
+      <option name="charting.axisY.scale">linear</option>
+      <option name="charting.chart">line</option>
+      <option name="charting.chart.nullValueMode">gaps</option>
+      <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+      <option name="charting.chart.stackMode">stacked</option>
+      <option name="charting.chart.style">shiny</option>
+      <option name="charting.drilldown">all</option>
+      <option name="charting.layout.splitSeries">0</option>
+      <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+      <option name="charting.legend.placement">bottom</option>
+      <option name="charting.axisLabelsX.majorLabelStyle.rotation">45</option>
+      <drilldown>
+        <link>
+          <![CDATA[
+            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" login_name = $click.value$
+      ]]>
+        </link>
+      </drilldown>
+    </chart>
+
+  </row>
+
+  <row>
+    <table>
+      <title>The file size > 50M</title>
+      <searchString>sourcetype="ss_log" type="aie" objs{}.size>52428800 | rename objs{}.name as File login_name as User appname as App activity as Activity | table _time, File, User, App, Activity</searchString>
+      <option name="afterLabel">Total Events</option>
+      <option name="classField">None</option>
+      <option name="dataOverlayMode">none</option>
+      <option name="displayRowNumbers">true</option>
+      <option name="drilldown">cell</option>
+      <option name="wrap">false</option>
+      <option name="count">10</option>
+    </table>
+  </row>
+
+  <row>
+    <chart>
+      <title>Top 3 apps each day</title>
+      <searchString>sourcetype=ss_log type=aie | timechart span=1d useother=false limit=3 count by appname</searchString>
+      <option name="charting.axisTitleX.visibility">collapsed</option>
+      <option name="charting.axisTitleY.visibility">collapsed</option>
+      <option name="charting.axisX.scale">linear</option>
+      <option name="charting.axisY.scale">linear</option>
+      <option name="charting.chart">bar</option>
+      <option name="charting.chart.nullValueMode">gaps</option>
+      <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+      <option name="charting.chart.stackMode">stacked</option>
+      <option name="charting.chart.style">shiny</option>
+      <option name="charting.drilldown">all</option>
+      <option name="charting.layout.splitSeries">0</option>
+      <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+      <option name="charting.legend.placement">bottom</option>
+      <drilldown>
+        <link>
+          <![CDATA[
+            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" appname = $click.name2$&earliest=$earliest$&latest=$latest$
+      ]]>
+        </link>
+      </drilldown>
+    </chart>
+
+
+    <chart>
+      <title>The 3 unsubscribe apps usage every day</title>
+      <searchString>sourcetype=ss_log type=aie appname!=Box | timechart useother=false sep=1d limit=3 count(appname) by appname</searchString>
+      <option name="charting.axisTitleX.visibility">collapsed</option>
+      <option name="charting.axisTitleY.visibility">collapsed</option>
+      <option name="charting.axisX.scale">linear</option>
+      <option name="charting.axisY.scale">linear</option>
+      <option name="charting.chart">line</option>
+      <option name="charting.chart.nullValueMode">gaps</option>
+      <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+      <option name="charting.chart.stackMode">stacked</option>
+      <option name="charting.chart.style">shiny</option>
+      <option name="charting.drilldown">all</option>
+      <option name="charting.layout.splitSeries">0</option>
+      <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+      <option name="charting.legend.placement">bottom</option>
+      <drilldown>
+        <link>
+          <![CDATA[
+            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" appname = $click.name2$ | stats count(login_name) by login_name&earliest=$earliest$&latest=$latest$
+      ]]>
+        </link>
+      </drilldown>
+    </chart>
+  </row>
+<row>
+  <html>
+      <h2>Most accessed subscribed apps</h2>
+
+      <div id="bubbleSearch1"
+           class="splunk-manager"
+           data-require="splunkjs/mvc/searchmanager"
+           data-options='{
+              "search": "sourcetype=ss_log type=aie [search sourcetype=ss_log type=aie login_name=*@gmail.com | stats values(appname) as appname] | stats count(appname) as hits by appname",
+              "earliest_time": "-360d",
+              "status_buckets": 0,
+              "cancelOnUnload": true,
+              "auto_cancel": 90,
+              "preview": true
+           }'>
+      </div>
+
+      <div id="bubbleChart1"
+           class="splunk-view"
+           data-require="app/splunkforstratusee/components/tagcloud/tagcloud"
+           data-options='{
+              "managerid": "bubbleSearch1",
+              "labelField": "appname",
+              "valueField": "hits",
+              "height": 450
+           }'>
+      </div>
+  </html>
+
+  <html>
+      <h2>Most accessed unsubscribed apps</h2>
+
+      <div id="bubbleSearch2"
+           class="splunk-manager"
+           data-require="splunkjs/mvc/searchmanager"
+           data-options='{
+              "search": "sourcetype=ss_log type=aie [search sourcetype=ss_log type=aie login_name!=*@gmail.com | stats values(appname) as appname] | stats count(appname) as hits by appname",
+              "earliest_time": "-360d",
+              "status_buckets": 0,
+              "cancelOnUnload": true,
+              "auto_cancel": 90,
+              "preview": true
+           }'>
+      </div>
+
+      <div id="bubbleChart2"
+           class="splunk-view"
+           data-require="app/splunkforstratusee/components/tagcloud/tagcloud"
+           data-options='{
+              "managerid": "bubbleSearch2",
+              "labelField": "appname",
+              "valueField": "hits",
+              "height": 450
+           }'>
+      </div>
+  </html>
+</row>
+
+  <row>
+    <map>
+      <title>Applications by Source IP Location</title>
+      <searchString>sourcetype="ss_log" type="gw" | geostats longfield=src_geo.longitude latfield=src_geo.latitude count by req_dn</searchString>
+    </map>
+  </row>
+
+</dashboard>
