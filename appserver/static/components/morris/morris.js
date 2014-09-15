@@ -12,7 +12,7 @@ Licensed under the BSD-2-Clause License.
         // Browser globals
         factory(morris);
     }
-}(function(jquery, Raphael) {
+}(function($, Raphael) {
   var $, Morris, minutesSpecHelper, secondsSpecHelper,
     __slice = [].slice,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
