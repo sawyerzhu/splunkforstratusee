@@ -8,7 +8,7 @@ define(function(require, module) {
     var jquery_knob = require('./jquery.knob');
     var SimpleSplunkView = require('splunkjs/mvc/simplesplunkview');
     var Drilldown = require('splunkjs/mvc/drilldown');
-    var Morris = require('../morris/morris');
+    var highcharts = require('highcharts');
 
     require('css!./knob.css');
 
@@ -37,7 +37,7 @@ define(function(require, module) {
             var el = this.$el.empty();
             var minMagnitude = Infinity, maxMagnitude = -Infinity;
 
-            $('<div  id="' + id +'"></div>').appendTo(el);
+            $('<input type="text" id="' + id + '" class="dial"><div style="margin-top: 10px; padding-bottom: 10px;" id="' + id2 +'"></div>').appendTo(el);
 
             var value = 0;
             var file_types = [];
@@ -47,14 +47,27 @@ define(function(require, module) {
                 file_types = data[1].file_types;
             }
 
-            Morris.Donut({
-              element: id,
-              data: [
-                {label: "Download Sales", value: 12},
-                {label: "In-Store Sales", value: 30},
-                {label: "Mail-Order Sales", value: 20}
-              ]
+            $("#" + id).val(value).knob({
+                'fgColor': "#66CC66",
+                'angleOffset': -125,
+                'angleArc': 250,
+                'readOnly': true,
+                'min':0,
+                'width': 260,
+                'max': (Math.random() + 1) * value
             });
+
+            $("#" + id).css({
+                "font-size": '40px',
+                'box-shadow': 'inset 0 0 0 rgba(0, 0, 0, 0.075)'
+            });
+
+            $("#" + id).parent().css({
+                "margin-top": me.settings.get('marginTop') || 60,
+                "margin-left": ($("#" + id).parent().parent().width() - $("#" + id).parent().width()) / 2
+            });
+
+            $('#' + id2).html("File types: " + file_types.join(', '));
         }
     });
 
