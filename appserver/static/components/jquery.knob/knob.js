@@ -50,13 +50,16 @@ define(function(require, module) {
                 }
             }
 
-            $('#susan_eu').html('Data volume Susan moved out of EU - total ' + Math.round(total) + "GB")
+            $('#susan_eu').html('Data volume Susan moved out of EU - total ' + Math.round(total) + " GB")
 
             $('#' + id).highcharts({
                  chart: {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false
+            },
+            title: {
+                text: ''
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
