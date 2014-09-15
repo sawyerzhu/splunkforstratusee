@@ -5,6 +5,78 @@
   <earliestTime>rt-360d</earliestTime>
   <latestTime>rt</latestTime>
   <row>
+    <single>
+      <searchString>sourcetype="ss_log" type="gw" | stats values(req_dn) as a | stats count(a)</searchString>
+      <option name="classField">None</option>
+      <option name="underLabel">Total accessed apps</option>
+      <option name="linkView">search</option>
+      <drilldown>
+        <link>
+          <![CDATA[
+            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="gw" | stats values(req_dn)
+      ]]>
+        </link>
+      </drilldown>
+    </single>
+
+    <single>
+      <searchString>sourcetype="ss_log" type="aie" | stats values(appname) as a | stats count(a)</searchString>
+      <option name="classField">None</option>
+      <option name="underLabel">Total monitored apps</option>
+      <option name="linkView">search</option>
+      <drilldown>
+        <link>
+          <![CDATA[
+            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" | stats values(appname)
+      ]]>
+        </link>
+      </drilldown>
+    </single>
+
+    <single>
+      <searchString>sourcetype="ss_log" type="aie" | eval accountname=split(login_name,"@") | eval from_user=mvindex(accountname,0) | stats values(from_user) as a | stats count(a)</searchString>
+      <option name="classField">None</option>
+      <option name="underLabel">Total users</option>
+      <option name="linkView">search</option>
+      <drilldown>
+        <link>
+          <![CDATA[
+            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" | eval accountname=split(login_name,"@") | eval from_user=mvindex(accountname,0) | stats values(from_user) as a | stats values(a)
+      ]]>
+        </link>
+      </drilldown>
+    </single>
+
+    <single>
+      <searchString>sourcetype="ss_log" type="gw" | stats values(req_mac) as a | stats count(a)</searchString>
+      <option name="classField">None</option>
+      <option name="underLabel">Total devices</option>
+      <option name="linkView">search</option>
+      <drilldown>
+        <link>
+          <![CDATA[
+            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="gw" | stats values(req_mac)
+      ]]>
+        </link>
+      </drilldown>
+    </single>
+
+    <single>
+      <searchString>sourcetype="ss_log" type="aie" | stats values(objs{}.name) as a | stats count(a)</searchString>
+      <option name="classField">None</option>
+      <option name="underLabel">Total files</option>
+      <option name="linkView">search</option>
+      <drilldown>
+        <link>
+          <![CDATA[
+            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" | stats values(objs{}.name)
+      ]]>
+        </link>
+      </drilldown>
+    </single>
+
+  </row>
+  <row>
     <chart>
       <title>Subscribe and unsubscribe storage SaaS by access count</title>
       <searchString>sourcetype=ss_log type=aie category{}=storage | eval sub_unsub = if(like(login_name, "%@gmail.com"), "sub", "unsub") | stats count by sub_unsub</searchString>
@@ -43,68 +115,64 @@
 
   </row>
 
-  <row>
-    <html>
-        <h2>Most accessed subscribed apps</h2>
 
-        <div id="bubbleSearch1"
-             class="splunk-manager"
-             data-require="splunkjs/mvc/searchmanager"
-             data-options='{
-                "search": "sourcetype=ss_log type=aie [search sourcetype=ss_log type=aie login_name=*@gmail.com | stats values(appname) as appname] | stats count(appname) as hits by appname",
-                "earliest_time": "-360d",
-                "status_buckets": 0,
-                "cancelOnUnload": true,
-                "auto_cancel": 90,
-                "preview": true
-             }'>
-        </div>
+    <row>
+      <chart>
+        <title>The top 3 users access Box app every day</title>
+        <searchString>sourcetype=ss_log type=aie appname=box | timechart useother=false sep=1d limit=3 count(login_name) by login_name</searchString>
+        <option name="charting.axisTitleX.visibility">collapsed</option>
+        <option name="charting.axisTitleY.visibility">collapsed</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.chart">line</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">bottom</option>
+        <drilldown>
+          <link>
+            <![CDATA[
+              /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" login_name = $click.name2$ | stats count(login_name) by login_name&earliest=$earliest$&latest=$latest$
+        ]]>
+          </link>
+        </drilldown>
+      </chart>
 
-        <div id="bubbleChart1"
-             class="splunk-view"
-             data-require="app/splunkforstratusee/components/tagcloud/tagcloud"
-             data-options='{
-                "managerid": "bubbleSearch1",
-                "labelField": "appname",
-                "valueField": "hits",
-                "height": 450
-             }'>
-        </div>
-    </html>
+      <chart>
+        <title>The top 20 files access every day</title>
+        <searchString>sourcetype=ss_log type=aie | timechart useother=false usenull=false sep=1d limit=20 count by objs{}.name</searchString>
+        <option name="charting.axisTitleX.visibility">collapsed</option>
+        <option name="charting.axisTitleY.visibility">collapsed</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.chart">bar</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">bottom</option>
+        <drilldown>
+          <link>
+            <![CDATA[
+              /app/splunkforstratusee/search?q=sourcetype="ss_log" type="aie" objs{}.name = $click.name2$ | stats count(login_name) by login_name&earliest=$earliest$&latest=$latest$
+        ]]>
+          </link>
+        </drilldown>
+      </chart>
+    </row>
 
-    <html>
-        <h2>Most accessed unsubscribed apps</h2>
-
-        <div id="bubbleSearch2"
-             class="splunk-manager"
-             data-require="splunkjs/mvc/searchmanager"
-             data-options='{
-                "search": "sourcetype=ss_log type=aie [search sourcetype=ss_log type=aie login_name!=*@gmail.com | stats values(appname) as appname] | stats count(appname) as hits by appname",
-                "earliest_time": "-360d",
-                "status_buckets": 0,
-                "cancelOnUnload": true,
-                "auto_cancel": 90,
-                "preview": true
-             }'>
-        </div>
-
-        <div id="bubbleChart2"
-             class="splunk-view"
-             data-require="app/splunkforstratusee/components/tagcloud/tagcloud"
-             data-options='{
-                "managerid": "bubbleSearch2",
-                "labelField": "appname",
-                "valueField": "hits",
-                "height": 450
-             }'>
-        </div>
-    </html>
-  </row>
 
   <row>
 
     <html>
-        <h2>The file names of upload to unsubscribed apps</h2>
+        <h2>Uploaded file names for unsubscribe apps</h2>
 
         <div id="bubbleSearch4"
              class="splunk-manager"
