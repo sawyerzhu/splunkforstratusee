@@ -54,12 +54,13 @@ define(function(require, exports, module) {
 
             var fill = d3.scale.category20();
 
+            var fontSize = d3.scale['log']().range([10, 50]);
+
             d3.layout.cloud().size([w, h])
                 .words(data)
-                .padding(5)
-                //.rotate(function() { return ~~(Math.random() * 2) * 90; })
+                .timeInterval(10)
                 .font("Impact")
-                .fontSize(function(d) { return d.size * 2; })
+                .fontSize(function(d) { return fontSize(+d.size); })
                 .on("end", draw)
                 .start();
 
@@ -98,16 +99,6 @@ define(function(require, exports, module) {
                     text.style("font-family", function(d) { return d.font; })
                         .style("fill", function(d) { return fill(d.text.toLowerCase()); })
                         .text(function(d) { return d.text; });
-                    var exitGroup = background.append("g")
-                        .attr("transform", vis.attr("transform"));
-                    var exitGroupNode = exitGroup.node();
-                    text.exit().each(function() {
-                      exitGroupNode.appendChild(this);
-                    });
-                    exitGroup.transition()
-                        .duration(1000)
-                        .style("opacity", 1e-6)
-                        .remove();
                     vis.transition()
                         .delay(1000)
                         .duration(750)
