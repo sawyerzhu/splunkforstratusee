@@ -79,7 +79,7 @@
   <row>
     <chart>
       <title>Subscribe and unsubscribe storage SaaS by access count</title>
-      <searchString>sourcetype=ss_log type=aie category{}=storage | eval sub_unsub = if(like(login_name, "%@gmail.com"), "sub", "unsub") | stats count by sub_unsub</searchString>
+      <searchString>sourcetype=ss_log type=aie category{}=storage | eval sub_unsub = if(like(login_name, "%@gmail.com"), "Subscribe app", "Unsubscribe app") | stats count by sub_unsub</searchString>
       <option name="charting.axisTitleX.visibility">collapsed</option>
       <option name="charting.axisTitleY.visibility">collapsed</option>
       <option name="charting.axisX.scale">linear</option>
