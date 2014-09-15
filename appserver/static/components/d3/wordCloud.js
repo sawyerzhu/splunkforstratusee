@@ -87,11 +87,12 @@ define(function(require, exports, module) {
                     return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
                   })
                   .text(function(d) { return d.text; });
-
+                /*
                 vis.transition()
                   .delay(1000)
                   .duration(750)
                   .attr("transform", "translate(" + [w >> 1, h >> 1] + ")scale(" + scale + ")");
+                */
             }
         }
     });
