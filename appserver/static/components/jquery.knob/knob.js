@@ -50,7 +50,7 @@ define(function(require, module) {
                 }
             }
 
-            4('#susan_eu').html('Data volume Susan moved out of EU - total ' + Math.round(total) + "GB")
+            $('#susan_eu').html('Data volume Susan moved out of EU - total ' + Math.round(total) + "GB")
 
             $('#' + id).highcharts({
                  chart: {
