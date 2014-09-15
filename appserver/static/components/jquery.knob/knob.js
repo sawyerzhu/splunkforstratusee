@@ -8,6 +8,7 @@ define(function(require, module) {
     var jquery_knob = require('./jquery.knob');
     var SimpleSplunkView = require('splunkjs/mvc/simplesplunkview');
     var Drilldown = require('splunkjs/mvc/drilldown');
+    var highcharts = require('highcharts');
 
     require('css!./knob.css');
 
