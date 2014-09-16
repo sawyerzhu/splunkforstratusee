@@ -9,7 +9,8 @@ define(function(require, module) {
     var SimpleSplunkView = require('splunkjs/mvc/simplesplunkview');
     var Drilldown = require('splunkjs/mvc/drilldown');
     var Highcharts = require('highcharts');
-
+    var Morris = require('../morris/morris');
+    require('css!../morris/morris.css');
     require('css!./knob.css');
 
     var Knob = SimpleSplunkView.extend({
