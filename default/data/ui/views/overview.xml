@@ -8,7 +8,7 @@
     <single>
       <searchString>sourcetype="ss_log" type="gw" | stats values(req_dn) as a | stats count(a)</searchString>
       <option name="classField">None</option>
-      <option name="underLabel">Total accessed apps</option>
+      <option name="underLabel">Total used apps</option>
       <option name="linkView">search</option>
       <drilldown>
         <link>
@@ -78,8 +78,8 @@
   </row>
   <row>
     <chart>
-      <title>Subscribe and unsubscribe storage SaaS by access count</title>
-      <searchString>sourcetype=ss_log type=aie category{}=storage | eval sub_unsub = if(like(login_name, "%@gmail.com"), "Subscribe app", "Unsubscribe app") | stats count by sub_unsub</searchString>
+      <title>Subscribe and unsubscribe storage SaaS by used count</title>
+      <searchString>sourcetype=ss_log type=aie category{}=storage | eval sub_unsub = if(like(login_name, "%@gmail.com"), "Subscribed app", "Unsubscribed app") | stats count by sub_unsub</searchString>
       <option name="charting.axisTitleX.visibility">collapsed</option>
       <option name="charting.axisTitleY.visibility">collapsed</option>
       <option name="charting.axisX.scale">linear</option>
@@ -97,7 +97,7 @@
 
     <chart>
       <title>Subscribe and unsubscribe storage SaaS by distinct name</title>
-      <searchString>sourcetype=ss_log type=aie category{}=storage | eval aa = if(like(login_name, "%@gmail.com"), "Subscribe app@" + appname, "Unsubscribe app@" + appname) | eval type_appname=split(aa,"@") | eval type=mvindex(type_appname,0) | eval app=mvindex(type_appname,-1) | stats distinct_count(appname) by type</searchString>
+      <searchString>sourcetype=ss_log type=aie category{}=storage | eval aa = if(like(login_name, "%@gmail.com"), "Subscribed app@" + appname, "Unsubscribed app@" + appname) | eval type_appname=split(aa,"@") | eval type=mvindex(type_appname,0) | eval app=mvindex(type_appname,-1) | stats distinct_count(appname) by type</searchString>
       <option name="charting.axisTitleX.visibility">collapsed</option>
       <option name="charting.axisTitleY.visibility">collapsed</option>
       <option name="charting.axisX.scale">linear</option>
@@ -118,7 +118,7 @@
 
     <row>
       <chart>
-        <title>The top 3 users access Box app every day</title>
+        <title>Top 3 users used Box app every day</title>
         <searchString>sourcetype=ss_log type=aie appname=box | timechart useother=false sep=1d limit=3 count(login_name) by login_name</searchString>
         <option name="charting.axisTitleX.visibility">collapsed</option>
         <option name="charting.axisTitleY.visibility">collapsed</option>
@@ -143,7 +143,7 @@
       </chart>
 
       <chart>
-        <title>The top 20 files access every day</title>
+        <title>Top 20 files used every day</title>
         <searchString>sourcetype=ss_log type=aie | timechart useother=false usenull=false sep=1d limit=20 count by objs{}.name</searchString>
         <option name="charting.axisTitleX.visibility">collapsed</option>
         <option name="charting.axisTitleY.visibility">collapsed</option>
@@ -172,7 +172,7 @@
   <row>
 
     <html>
-        <h2>Uploaded file names for unsubscribe apps</h2>
+        <h2>Uploaded file names for unsubscribed apps</h2>
 
         <div id="bubbleSearch4"
              class="splunk-manager"

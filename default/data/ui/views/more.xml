@@ -7,7 +7,7 @@
 
   <row>
     <chart>
-      <title>Most access apps</title>
+      <title>Most used apps</title>
       <searchString>sourcetype="ss_log" type="aie" | top limit=10 appname</searchString>
       <option name="charting.axisTitleX.visibility">collapsed</option>
       <option name="charting.axisTitleY.visibility">collapsed</option>
@@ -33,7 +33,7 @@
   </row>
   <row>
     <chart>
-      <title>Most access files</title>
+      <title>Most used files</title>
       <searchString>sourcetype="ss_log" type="aie" | top limit=10 objs{}.name | rename objs{}.name as file</searchString>
       <option name="charting.axisTitleX.visibility">collapsed</option>
       <option name="charting.axisTitleY.visibility">collapsed</option>
@@ -154,7 +154,7 @@
   </row>
 <row>
   <html>
-      <h2>Most accessed subscribed apps</h2>
+      <h2>Most used subscribed apps</h2>
 
       <div id="bubbleSearch1"
            class="splunk-manager"
@@ -182,7 +182,7 @@
   </html>
 
   <html>
-      <h2>Most accessed unsubscribed apps</h2>
+      <h2>Most used unsubscribed apps</h2>
 
       <div id="bubbleSearch2"
            class="splunk-manager"

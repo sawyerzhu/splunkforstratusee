@@ -76,7 +76,7 @@ define(function(require, module) {
             },
             series: [{
                 type: 'pie',
-                name: 'Share total size',
+                name: 'Volume percentage',
                 data: file_types
             }]
 
