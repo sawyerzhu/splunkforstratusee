@@ -7,7 +7,7 @@
 
   <row>
     <chart>
-      <title>Most used apps</title>
+      <title>Top 10 monitored apps</title>
       <searchString>sourcetype="ss_log" type="aie" | top limit=10 appname</searchString>
       <option name="charting.axisTitleX.visibility">collapsed</option>
       <option name="charting.axisTitleY.visibility">collapsed</option>
@@ -33,7 +33,7 @@
   </row>
   <row>
     <chart>
-      <title>Most used files</title>
+      <title>Top 10 most accessed files by names</title>
       <searchString>sourcetype="ss_log" type="aie" | top limit=10 objs{}.name | rename objs{}.name as file</searchString>
       <option name="charting.axisTitleX.visibility">collapsed</option>
       <option name="charting.axisTitleY.visibility">collapsed</option>
@@ -59,7 +59,7 @@
     </chart>
 
     <chart>
-      <title>Most active users</title>
+      <title>Top 10 most active users</title>
       <searchString>sourcetype="ss_log" type="aie" | top limit=10 login_name</searchString>
       <option name="charting.axisTitleX.visibility">collapsed</option>
       <option name="charting.axisTitleY.visibility">collapsed</option>
@@ -128,7 +128,7 @@
 
 
     <chart>
-      <title>The 3 unsubscribe apps usage every day</title>
+      <title>Top 3 unsubscribed apps usage</title>
       <searchString>sourcetype=ss_log type=aie appname!=Box | timechart useother=false sep=1d limit=3 count(appname) by appname</searchString>
       <option name="charting.axisTitleX.visibility">collapsed</option>
       <option name="charting.axisTitleY.visibility">collapsed</option>

@@ -78,7 +78,7 @@
   </row>
   <row>
     <chart>
-      <title>Subscribe and unsubscribe storage SaaS by used count</title>
+      <title>Subscribed and unsubscribed storage SaaS by used count</title>
       <searchString>sourcetype=ss_log type=aie category{}=storage | eval sub_unsub = if(like(login_name, "%@gmail.com"), "Subscribed app", "Unsubscribed app") | stats count by sub_unsub</searchString>
       <option name="charting.axisTitleX.visibility">collapsed</option>
       <option name="charting.axisTitleY.visibility">collapsed</option>
@@ -96,7 +96,7 @@
     </chart>
 
     <chart>
-      <title>Subscribe and unsubscribe storage SaaS by distinct name</title>
+      <title>Subscribed and unsubscribed storage SaaS by distinct name</title>
       <searchString>sourcetype=ss_log type=aie category{}=storage | eval aa = if(like(login_name, "%@gmail.com"), "Subscribed app@" + appname, "Unsubscribed app@" + appname) | eval type_appname=split(aa,"@") | eval type=mvindex(type_appname,0) | eval app=mvindex(type_appname,-1) | stats distinct_count(appname) by type</searchString>
       <option name="charting.axisTitleX.visibility">collapsed</option>
       <option name="charting.axisTitleY.visibility">collapsed</option>
@@ -118,7 +118,7 @@
 
     <row>
       <chart>
-        <title>Top 3 users used Box app every day</title>
+        <title>Top 3 users access Box app every day</title>
         <searchString>sourcetype=ss_log type=aie appname=box | timechart useother=false sep=1d limit=3 count(login_name) by login_name</searchString>
         <option name="charting.axisTitleX.visibility">collapsed</option>
         <option name="charting.axisTitleY.visibility">collapsed</option>
@@ -143,7 +143,7 @@
       </chart>
 
       <chart>
-        <title>Top 20 files used every day</title>
+        <title>Top 20 files accessed every day</title>
         <searchString>sourcetype=ss_log type=aie | timechart useother=false usenull=false sep=1d limit=20 count by objs{}.name</searchString>
         <option name="charting.axisTitleX.visibility">collapsed</option>
         <option name="charting.axisTitleY.visibility">collapsed</option>
