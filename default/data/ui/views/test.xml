@@ -7,16 +7,16 @@
             <h2>Configuration Option</h2>
 
             You can change the retrieved configuration option using the
-            <a href="/manager/simple_xml_examples/apps/local/simple_xml_examples/setup?action=edit" target="_blank">
+            <a href="/manager/splunkforstratusee/apps/local/splunkforstratusee/setup?action=edit" target="_blank">
                 App Setup in Splunk Manager
             </a>
             that comes with this examples app.
         </html>
 
         <table>
-            <title>Search using $$sourcetype$$ = $sourcetype|s$</title>
+            <title>Search using $$sourcetype$$ = $offical_email_suffix$</title>
 
-            <searchString>index=_internal sourcetype=$sourcetype|s$ | stats count by sourcetype</searchString>
+            <searchString>index=_internal sourcetype=ss_log | stats count by sourcetype</searchString>
             <earliestTime>-24h</earliestTime>
         </table>
     </row>

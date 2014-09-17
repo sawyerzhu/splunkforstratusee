@@ -1,9 +1,9 @@
 <setup>
-    <block title="Custom App Setup Example" endpoint="configs/conf-myconf">
-        <text>Set a configuration option in a custom configuration file (myconf.conf)</text>
-        <input entity="settings" field="example_sourcetype">
+    <block title="Splunk for StratuSee App Configuration" endpoint="configs/conf-myconf">
+        <input entity="settings" field="offical_email_suffix">
             <type>text</type>
-            <label>Example Configuration Option</label>
+            <value>gmail.com</value>
+            <label>Set Enterprise Email Suffix</label>
         </input>
     </block>
 </setup>
