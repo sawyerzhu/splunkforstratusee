@@ -36,11 +36,11 @@ require([
         }
     }).done(function(){
         // When the model has been successfully loaded
-        var value = settings.entry.content.get('example_sourcetype');
+        var value = settings.entry.content.get('offical_email_suffix');
 
         // Set the token in both the default and submitted namespace
-        mvc.Components.get('default').set('sourcetype', value);
-        mvc.Components.get('submitted').set('sourcetype', value);
+        mvc.Components.get('default').set('offical_email_suffix', value);
+        mvc.Components.get('submitted').set('offical_email_suffix', value);
 
         /////////////////////////////
         // init dashboard html
