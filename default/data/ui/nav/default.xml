@@ -3,4 +3,5 @@
   <view name="more"/>
   <view name="search"/>
   <view name="test"/>
+  <a href="/manager/SplunkforPaloAltoNetworks/apps/local/SplunkforPaloAltoNetworks/setup?action=edit">Configuration</a>
 </nav>
