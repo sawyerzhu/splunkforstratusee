@@ -16,7 +16,7 @@
         <table>
             <title>Search using $$sourcetype$$ = $offical_email_suffix$</title>
 
-            <searchString>index=_internal sourcetype=ss_log | stats count by sourcetype</searchString>
+            <searchString>index=_internal sourcetype=$sourcetype|s$ | stats count by sourcetype</searchString>
             <earliestTime>-24h</earliestTime>
         </table>
     </row>
