@@ -8,7 +8,7 @@ require(['splunkjs/mvc/simplexml/ready!'], function(){
     ////////////////////////////
     // set init config parameter
     ////////////////////////////
-    
+
     var CustomConfModel = SplunkDModel.extend({
         urlRoot: 'configs/conf-myconf'
     });
@@ -34,13 +34,15 @@ require(['splunkjs/mvc/simplexml/ready!'], function(){
         // Set the token in both the default and submitted namespace
         mvc.Components.get('default').set('sourcetype', value);
         mvc.Components.get('submitted').set('sourcetype', value);
+
+        /////////////////////////////
+        // init dashboard html
+        /////////////////////////////
+        require(['splunkjs/ready!'], function(){
+            // The splunkjs/ready loader script will automatically instantiate all elements
+            // declared in the dashboard's HTML.
+        });
     });
 
-    /////////////////////////////
-    // init dashboard html
-    /////////////////////////////
-    require(['splunkjs/ready!'], function(){
-        // The splunkjs/ready loader script will automatically instantiate all elements
-        // declared in the dashboard's HTML.
-    });
+
 });
