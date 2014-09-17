@@ -79,7 +79,7 @@
   <row>
     <chart>
       <title>Subscribed and unsubscribed storage SaaS by used count</title>
-      <searchString>sourcetype=ss_log type=aie category{}=storage | eval sub_unsub = if(like(login_name, "%@gmail.com"), "Subscribed app", "Unsubscribed app") | stats count by sub_unsub</searchString>
+      <searchString>sourcetype=ss_log type=aie category{}=storage | eval sub_unsub = if(like(login_name, "%@$offical_email_suffix$"), "Subscribed app", "Unsubscribed app") | stats count by sub_unsub</searchString>
       <option name="charting.axisTitleX.visibility">collapsed</option>
       <option name="charting.axisTitleY.visibility">collapsed</option>
       <option name="charting.axisX.scale">linear</option>
@@ -97,7 +97,7 @@
 
     <chart>
       <title>Subscribed and unsubscribed storage SaaS by distinct name</title>
-      <searchString>sourcetype=ss_log type=aie category{}=storage | eval aa = if(like(login_name, "%@gmail.com"), "Subscribed app@" + appname, "Unsubscribed app@" + appname) | eval type_appname=split(aa,"@") | eval type=mvindex(type_appname,0) | eval app=mvindex(type_appname,-1) | stats distinct_count(appname) by type</searchString>
+      <searchString>sourcetype=ss_log type=aie category{}=storage | eval aa = if(like(login_name, "%@$offical_email_suffix$"), "Subscribed app@" + appname, "Unsubscribed app@" + appname) | eval type_appname=split(aa,"@") | eval type=mvindex(type_appname,0) | eval app=mvindex(type_appname,-1) | stats distinct_count(appname) by type</searchString>
       <option name="charting.axisTitleX.visibility">collapsed</option>
       <option name="charting.axisTitleY.visibility">collapsed</option>
       <option name="charting.axisX.scale">linear</option>
