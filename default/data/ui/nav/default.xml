@@ -2,4 +2,5 @@
   <view name="overview" default="true"/>
   <view name="more"/>
   <view name="search"/>
+  <view name="test"/>
 </nav>

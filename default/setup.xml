@@ -1,0 +1,9 @@
+<setup>
+    <block title="Custom App Setup Example" endpoint="configs/conf-myconf">
+        <text>Set a configuration option in a custom configuration file (myconf.conf)</text>
+        <input entity="settings" field="example_sourcetype">
+            <type>text</type>
+            <label>Example Configuration Option</label>
+        </input>
+    </block>
+</setup>
