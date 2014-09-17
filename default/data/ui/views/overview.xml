@@ -207,7 +207,7 @@
              class="splunk-manager"
              data-require="splunkjs/mvc/searchmanager"
              data-options='{
-                "search": "sourcetype=ss_log type=aie category{}=storage activity=download login_name=susan* login_name=*@$offical_email_suffix$ dst_geo.continent_code=EU src_geo.continent_code!=EU | stats sum(objs{}.size) as aa | eval total=aa/1024/1024/1024 | fields total | append [search sourcetype=ss_log type=aie category{}=storage activity=download login_name=susan* dst_geo.continent_code=EU src_geo.continent_code!=EU | rename objs{}.name as file | eval type_appname=split(file,\".\") | eval type=mvindex(type_appname, -1) | stats sum(objs{}.size) as type_size by type | eval type_size=type_size/1024/1024/1024]",
+                "search": "sourcetype=ss_log type=aie category{}=storage activity=download login_name=susan* dst_geo.continent_code=EU src_geo.continent_code!=EU | stats sum(objs{}.size) as aa | eval total=aa/1024/1024/1024 | fields total | append [search sourcetype=ss_log type=aie category{}=storage activity=download login_name=susan* dst_geo.continent_code=EU src_geo.continent_code!=EU | rename objs{}.name as file | eval type_appname=split(file,\".\") | eval type=mvindex(type_appname, -1) | stats sum(objs{}.size) as type_size by type | eval type_size=type_size/1024/1024/1024]",
                 "earliest_time": "-360d",
                 "status_buckets": 0,
                 "cancelOnUnload": true,
