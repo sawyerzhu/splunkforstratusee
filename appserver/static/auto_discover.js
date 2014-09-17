@@ -4,12 +4,17 @@ require.config({
     }
 });
 
-require(['splunkjs/mvc/simplexml/ready!'], function(){
+require([
+    'underscore',
+    'jquery',
+    'models/SplunkDBase',
+    'splunkjs/mvc/sharedmodels',
+    'splunkjs/mvc',
+    'splunkjs/mvc/simplexml/ready!'
+], function(_, $, SplunkDModel, sharedModels, mvc) {
     ////////////////////////////
     // set init config parameter
     ////////////////////////////
-    var SplunkDModel = require('models/SplunkDBase');
-    var sharedModels = require('splunkjs/mvc/sharedmodels');
 
     var CustomConfModel = SplunkDModel.extend({
         urlRoot: 'configs/conf-myconf'
