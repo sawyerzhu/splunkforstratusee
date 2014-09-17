@@ -2,6 +2,5 @@
   <view name="overview" default="true"/>
   <view name="more"/>
   <view name="search"/>
-  <view name="test"/>
   <a href="/manager/splunkforstratusee/apps/local/splunkforstratusee/setup?action=edit">Configuration</a>
 </nav>
