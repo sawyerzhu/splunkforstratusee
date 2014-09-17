@@ -8,6 +8,8 @@ require(['splunkjs/mvc/simplexml/ready!'], function(){
     ////////////////////////////
     // set init config parameter
     ////////////////////////////
+    var SplunkDModel = require('models/SplunkDBase');
+    var sharedModls = require('splunkjs/mvc/sharedmodels');
 
     var CustomConfModel = SplunkDModel.extend({
         urlRoot: 'configs/conf-myconf'
