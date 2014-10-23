@@ -48,14 +48,14 @@
     </single>
 
     <single>
-      <searchString>sourcetype="ss_log" type="gw" | stats values(req_mac) as a | stats count(a)</searchString>
+      <searchString>sourcetype="ss_log" type="gw" | stats values(req_smac) as a | stats count(a)</searchString>
       <option name="classField">None</option>
       <option name="underLabel">Total devices</option>
       <option name="linkView">search</option>
       <drilldown>
         <link>
           <![CDATA[
-            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="gw" | stats values(req_mac)
+            /app/splunkforstratusee/search?q=sourcetype="ss_log" type="gw" | stats values(req_smac)
       ]]>
         </link>
       </drilldown>
